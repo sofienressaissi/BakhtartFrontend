@@ -1,0 +1,144 @@
+.onlyinfos{
+    background: -webkit-linear-gradient(left, #021144, #021144);
+}
+.logo {
+    margin-left: 85px;
+    margin-top: 6px;
+}
+.navigation {
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+    flex-flow: row-reverse;
+}
+.navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 140px;
+    margin-top: -2px;
+    font-size: 14px;
+}
+.navigation ul li {
+    padding-left: 27px;
+    margin-top: 15px;
+}
+.navigation ul li a {
+    text-decoration: none;
+}
+.navigation ul li:hover {
+    color: red;
+}
+.navigation li {
+    list-style: none;
+}
+.account {
+    float: right;
+    margin-top: -27px;
+    margin-right: 230px;
+    font-size: 15px;
+}
+.logoutB {
+    float: right;
+    margin-top: -30px;
+    margin-right: 100px;
+    font-size: 20px;
+}
+.loginB {
+    float: right;
+    margin-top: -27px;
+    margin-right: 130px;
+    font-size: 20px;
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #021144;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+    color: #021144;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #021144;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #021144;
+}
