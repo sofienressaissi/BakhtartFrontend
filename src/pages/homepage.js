@@ -243,15 +243,16 @@ export default function Homepage() {
       {`\
        #header .loginB {\
 	float: right;\
-	font-size:15px;\
+	font-size: 15px;\
 	color: #000;\
 	text-decoration:none;\
 	text-transform:uppercase;\
 	letter-spacing: 2px;\
-	/* background: #ffffff; */
 	position: absolute;\
 	top: 26px;\
+  margin-top: 8px;\
 	bottom: 50px;\
+  margin-bottom: -7px;\
 	right: 0px;\
 	text-align: center;\
 	padding: 6px 15px;\
