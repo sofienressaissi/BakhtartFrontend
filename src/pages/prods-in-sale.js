@@ -163,7 +163,7 @@ export default function ProdsInSale() {
 <section className="banner" id="home" role="banner">
     
   <header id="header">
-    <div className="header-content clearfix">
+    <div className="header-content clearfix" style={{marginTop: "9px"}}>
         <a href = "/">
         <img className="logo" src="../../../assets/images/logoBakhtSiren.png"/>
         </a>
@@ -415,7 +415,7 @@ export default function ProdsInSale() {
           font-size: 17px;\
           border-radius: 5px;\
           font-family: Felix Titling;\
-          margin-left: 70px;\
+          margin-left: 155px;\
         }\
       `}
     </style>
@@ -425,9 +425,9 @@ export default function ProdsInSale() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="titleCat">
-                                <h2 className="wow fadeInDown animated" 
-                                style={{fontFamily: 'Felix Titling', color: '#070C29'}}>Categories</h2>
-                                <ul className="categiri">
+                            <h2 className="wow fadeInDown animated" 
+                                style={{fontFamily: 'Felix Titling', color: '#070C29', marginLeft: "572px"}}>Categories</h2>
+                                <ul className="categiri" style={{marginLeft: "200px"}}>
                                           {
                                             getCatName === 'all' ?
                                             <>
