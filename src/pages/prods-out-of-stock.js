@@ -436,7 +436,7 @@ export default function ProdsOutOfStock() {
                             <div className="titleCat">
                             <h2 className="wow fadeInDown animated" 
                                 style={{fontFamily: 'Felix Titling', color: '#070C29', marginLeft: "572px"}}>Categories</h2>
-                                <ul className="categiri" style={{marginLeft: "200px"}}>
+                                <ul className="categiri" style={{marginLeft: "175px", display: 'inline'}}>
                                           {
                                             getCatName === 'all' ?
                                             <>

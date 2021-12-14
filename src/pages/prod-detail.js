@@ -1421,7 +1421,7 @@ export default function ProdDetail() {
                             }
                             <br/>
                             {
-                              nb_rate === 0 ?
+                              nb_rate === 0 && userrData.userr ?
                               <>
                               <div className = {classes.root} style={{marginLeft: '65px'}}>
                             <Rating
@@ -1437,7 +1437,7 @@ export default function ProdDetail() {
         style={{fontSize: '35px'}}
       />
       {
-        value > 0 ?
+        value > 0 && userrData.userr ?
         <>
         <button className="btn btn-warning"
       onClick={addProductRate}>Rate</button>
@@ -1450,7 +1450,7 @@ export default function ProdDetail() {
                               </> : <></>
                             }<br/><br/>
                             {
-                              nb_val > 0 && nb_pr > 0 ?
+                              nb_val > 0 && nb_pr > 0 && userrData.userr ?
                               <>
                               <h6 style={{fontFamily: 'Felix Titling', fontWeight: 'bold', color: '#021144'}}>
         Average Rating: {nb_val / nb_pr} out of 5
@@ -1461,11 +1461,11 @@ export default function ProdDetail() {
         disabled={true}
         style={{fontSize: '35px'}}
       />
-                              </> : <>
+                              </> : nb_val === 0 && nb_pr === 0 && userrData.userr ? <>
                               <h6 style={{fontFamily: 'Felix Titling', fontWeight: 'bold', color: '#021144'}}>
         Average Rating: Not Rated Yet
         </h6>
-                              </>
+                              </> : <></>
                             }
                             
                             
