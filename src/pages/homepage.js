@@ -183,7 +183,106 @@ export default function Homepage() {
     ><FaPhone/> Contact Us</Link></li>
         </ul>
         <style>
-        
+        {
+                  `\
+                  @media screen and (max-width: 740px){\
+    .container h4 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container h1 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container button {\
+        margin-left: 0px;\
+    }\
+    #section-profile p {\
+        margin-left: -75px;\
+    }\
+    #section-profile {\
+        height: 433px;\
+    }\
+    #products {\
+        padding: 30px 0;\
+    }\
+    #products .container .section-header {\
+        padding-bottom: 0px;\
+    }\
+    .no-gutter [class*=col-] {\
+        margin-top: 60px;\
+    }\
+    .work img {\
+        width: 85%;\
+        height: 85%;\
+        display: block;\
+        margin-left: auto;\
+        margin-right: auto;\
+    }\
+    #contactus {\
+        padding: 0px 0;\
+    }\
+    .section-header h2 {\
+        font-size: 30px;\
+    }\
+    .profile-desc .section-title {\
+        font-size: 30px;\
+        text-align: center;\
+        margin-left: -75px;\
+    }\
+    .conForm .submitBnt {\
+        font-size: 8px;\
+    }\
+    .contactusFooter {\
+        margin-top: -25px;\
+    }\
+    #map-overlay {\
+        height: 400px;\
+        margin-top: 0px;\
+        width: 392px;\
+        margin-left: -17px;\
+        background-color: #070C29;\
+        color: #D1B23E;\
+        text-align: center;\
+    }\
+    .navigation ul {\
+        display: inline;\
+    }\
+    .navigation span {\
+        display: inline;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    #header {\
+        width: 90%;\
+    }\
+    .navigation span .account {\
+        left: -150px;\
+        font-weight: bold;\
+    }\
+    .navigation .shopping-item {\
+        left: 90px;\
+        top: -4px;\
+        font-size: 2px;\
+    }\
+    .logoutB {\
+        left: 230px;\
+        height: 40px;\
+    }\
+    .logo {\
+        margin-left: 110px;\
+        margin-top: -4px;\
+    }\
+    .footer {\
+        background: white;\
+    }\
+}\
+`}
       {`\
         .shopping-item a {\
           color: #666;\
@@ -367,7 +466,7 @@ export default function Homepage() {
         }
       </nav>
 
-      <a href="#" className="nav-toggle">Menu<span></span></a> </div>
+      {/*<a href="#" className="nav-toggle">Menu<span>llllllll</span></a>*/} </div>
   </header>
   <div className="container">
     <div className="col-md-6 col-sm-12">
@@ -576,6 +675,7 @@ src="https://maps.google.com/maps?q=Rue%20de%20la%20tendresse,%20Marsa&t=&z=13&i
         </div>
         <style>
         {document.body.style.backgroundColor = "#070C29"}
+
         </style>
       </html>
         </>

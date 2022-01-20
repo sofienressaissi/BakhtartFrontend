@@ -323,7 +323,7 @@ export default function ProdsInSale() {
         }
       </nav>
 
-      <a href="#" className="nav-toggle">Menu<span></span></a> </div>
+      {/*<a href="#" className="nav-toggle">Menu<span></span></a>*/} </div>
   </header><br/><br/><br/><br/>
   <br/><br/>
   <style>
@@ -377,6 +377,9 @@ export default function ProdsInSale() {
     color: #000;\
     font-weight: bold;\
     margin-bottom: 25px !important;\
+    font-family: 'Felix Titling';\
+    color: '#070C29';\
+    margin-left: "572px";\
     text-transform: uppercase;\
     max-width: 312px;\
     width: 100%;\
@@ -418,6 +421,113 @@ export default function ProdsInSale() {
           margin-left: 155px;\
         }\
       `}
+        {
+                  `\
+                  @media screen and (max-width: 740px){\
+    .container h4 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container h1 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container button {\
+        margin-left: 0px;\
+    }\
+    #section-profile p {\
+        margin-left: -75px;\
+    }\
+    #section-profile {\
+        height: 433px;\
+    }\
+    #products {\
+        padding: 30px 0;\
+    }\
+    #products .container .section-header {\
+        padding-bottom: 0px;\
+    }\
+    .no-gutter [class*=col-] {\
+        margin-top: 60px;\
+    }\
+    .work img {\
+        width: 85%;\
+        height: 85%;\
+        display: block;\
+        margin-left: auto;\
+        margin-right: auto;\
+    }\
+    #contactus {\
+        padding: 0px 0;\
+    }\
+    .section-header h2 {\
+        font-size: 30px;\
+    }\
+    .profile-desc .section-title {\
+        font-size: 30px;\
+        text-align: center;\
+        margin-left: -75px;\
+    }\
+    .conForm .submitBnt {\
+        font-size: 8px;\
+    }\
+    .contactusFooter {\
+        margin-top: -25px;\
+    }\
+    #map-overlay {\
+        height: 400px;\
+        margin-top: 0px;\
+        width: 392px;\
+        margin-left: -17px;\
+        background-color: #070C29;\
+        color: #D1B23E;\
+        text-align: center;\
+    }\
+    .navigation ul {\
+        display: inline;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    #header {\
+        width: 96.1%;\
+    }\
+    .navigation span .account {\
+        left: -120px;\
+        font-weight: bold;\
+    }\
+    .navigation .shopping-item {\
+        left: 104px;\
+        top: -9px;\
+        font-size: 2px;\
+    }\
+    .logoutB {\
+        left: 230px;\
+        height: 40px;\
+    }\
+    .logo {\
+        margin-left: 100px;\
+        margin-top: -4px;\
+    }\
+    .footer {\
+        background: white;\
+    }\
+    ul.categiri li {\
+      display: flex;\
+      flex-direction: column;\
+    }\
+    div .searchInput {\
+        font-size: 17px; \
+        border-radius: 5px;\ 
+        font-family: Felix Titling;\
+        margin-left: 59px;\
+    }\
+}\
+`}
     </style>
     
     <div className="Categories">
@@ -425,8 +535,7 @@ export default function ProdsInSale() {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="titleCat">
-                            <h2 className="wow fadeInDown animated" 
-                                style={{fontFamily: 'Felix Titling', color: '#070C29', marginLeft: "572px"}}>Categories</h2>
+                            <h2 className="wow fadeInDown animated">Categories</h2>
                                 <ul className="categiri" style={{marginLeft: "175px", display: 'inline'}}>
                                           {
                                             getCatName === 'all' ?
