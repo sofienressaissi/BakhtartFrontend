@@ -9,6 +9,9 @@ import UserContext from "../context/UserContext";
 import emailjs from "emailjs-com";
 import { useSpeechSynthesis } from 'react-speech-kit';
 import Axios from 'axios';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Menu } from "../components/Menu";
+import { ReactDimmer } from "react-dimmer";
 
 export default function Homepage() {
 
@@ -17,6 +20,11 @@ export default function Homepage() {
     const [email, setEmail] = useState();
     const [subject, setSubject] = useState();
     const [content, setContent] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+    setMenu((prevState) => !prevState);
+  };
 
   let { speak } = useSpeechSynthesis();
 
@@ -35,7 +43,6 @@ export default function Homepage() {
     },[]);
 
     const changeBackground = () => {
-      console.log(window.scrollY)
       if (window.scrollY >= 66) {
         setNavbar(true)
       } else {
@@ -243,7 +250,7 @@ export default function Homepage() {
     #map-overlay {\
         height: 400px;\
         margin-top: 0px;\
-        width: 392px;\
+        width: 377px;\
         margin-left: -17px;\
         background-color: #070C29;\
         color: #D1B23E;\
@@ -259,29 +266,50 @@ export default function Homepage() {
         display: none;\
     }\
     #header {\
-        width: 90%;\
+        position: fixed;\
+        width: 100%;\
+        height: 13%;\
+        z-index: 999;\
+        background: rgb(2, 17, 68, 0.5);\
     }\
     .navigation span .account {\
         left: -150px;\
         font-weight: bold;\
+        display: none;\
     }\
     .navigation .shopping-item {\
         left: 90px;\
         top: -4px;\
         font-size: 2px;\
+        display: none;\
     }\
     .logoutB {\
         left: 230px;\
         height: 40px;\
     }\
     .logo {\
-        margin-left: 110px;\
-        margin-top: -4px;\
+        margin-left: 0px;\
+        margin-top: 5px;\
     }\
     .footer {\
         background: white;\
     }\
+    .loginB {\
+        display: none;\
+    }\
+    .logoutB {\
+        display: none;\
+    }\
+    .menu-btn {\
+  font-size: 2.75rem;\
+  margin-left: 325px;\
+  margin-top: -18px;\
+  color: rgb(209, 167, 62);\
+  cursor: pointer;\
+  visibility: visible;\
 }\
+}\
+
 `}
       {`\
         .shopping-item a {\
@@ -360,6 +388,13 @@ export default function Homepage() {
 }\
       `}
         </style>
+          <style>
+              {`\
+        .menu-btn {\
+  opacity: 1;\
+}\
+      `}
+          </style>
         <style>
           {`\
         .shopping-item {\
@@ -465,8 +500,16 @@ export default function Homepage() {
         </button>
         }
       </nav>
-
-      {/*<a href="#" className="nav-toggle">Menu<span>llllllll</span></a>*/} </div>
+      {/*<a href="#" className="nav-toggle">Menu<span>llllllll</span></a>*/}
+        <div className="hiddenOrNot"><GiHamburgerMenu className="menu-btn" onClick={handleMenu}/>
+        <Menu isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      /></div>
+    </div>
   </header>
   <div className="container">
     <div className="col-md-6 col-sm-12">
