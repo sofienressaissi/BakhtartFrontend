@@ -9,6 +9,9 @@ import { toast } from 'toast-notification-alert';
 import ScrollUpButton from "react-scroll-up-button";
 import { useSpeechSynthesis } from 'react-speech-kit';
 import UserContext from "../context/UserContext";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {MenuAccount} from "../components/MenuAccount";
+import {ReactDimmer} from "react-dimmer";
 
 export default function EditProfile() {
 
@@ -30,6 +33,11 @@ export default function EditProfile() {
     const [ville, setVille] = useState();
     const [firstAddress, setFirstAddress] = useState();
     const [secondAddress, setSecondAddress] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+        setMenu((prevState) => !prevState);
+    };
 
     const history = useHistory();
 
@@ -216,8 +224,160 @@ export default function EditProfile() {
             <img className="logo" src={`https://bakhtart.herokuapp.com/assets/images/logoBakhtSiren.png`}/>
         </a>
         <nav className="navigation" role="navigation">
-           
         </nav>
+        <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
+        <MenuAccount isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
+        <style>
+            {
+                  `\
+                  @media screen and (max-width: 740px){\
+    #map-overlay {\
+        height: 400px;\
+        margin-top: 0px;\
+        width: 377px;\
+        margin-left: -17px;\
+        background-color: #070C29;\
+        color: #D1B23E;\
+        text-align: center;\
+    }\
+    .navigation ul {\
+        display: inline;\
+    }\
+    .navigation span {\
+        display: inline;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    #header {\
+        position: fixed;\
+        width: 100%;\
+        height: 13%;\
+        z-index: 999;\
+        background: rgb(2, 17, 68, 0.5);\
+    }\
+    .navigation span .account {\
+        left: -100px;\
+        font-weight: bold;\
+        display: none;\
+    }\
+    .navigation .shopping-item {\
+        left: 90px;\
+        top: -4px;\
+        font-size: 2px;\
+        display: none;\
+    }\
+    .logoutB {\
+        left: 230px;\
+        height: 40px;\
+    }\
+    .footer {\
+        background: white;\
+        display: none;\
+    }\
+    .account {\
+        display: none;\
+    }\
+    .emp-profile {\
+        width: 368px;\
+        left: 10px;\
+        margin-top: 10%;\
+    }\
+    .container {\
+        margin-left: 12px;\
+    }\
+    .loginB {\
+        display: none;\
+    }\
+    .logoutB {\
+        display: none;\
+    }\
+    .logo {\
+        margin-left: 10px;\
+        margin-top: 8px;\
+    }\
+    .menu-btn {\
+  font-size: 2.75rem;\
+  margin-left: 325px;\
+  margin-top: -18px;\
+  color: rgb(209, 167, 62);\
+  cursor: pointer;\
+  display: none;\
+}\
+.section-header h2 {\
+    margin-left: -55px;\
+    font-size: 20px;\
+}\
+.conForm input[type="text"], .conForm input[type="email"] {\
+    width: 368px;\
+    left: -42px;\
+    border-radius: 5px;\
+}\
+.formEdit input {\
+    width: 333px;\
+}\
+.formEdit input[type="submit"] {\
+    margin-left: 5px;\
+}\
+.conForm #message {\
+    width: 368px;\
+    left: -42px;\
+    border-radius: 5px;\
+}\
+.profile-head .nav-tabs {\
+    display: none;\
+}\
+.submitBnt {\
+    border-radius: 0px;\
+}\
+.profile-edit-btn {\
+    margin-left: 0px;\
+    display: none;\
+}\
+.profile-work {\
+    margin-left: -40px;\
+}\
+.col-md-6, label {\
+    text-align: center;\
+}\
+form input[type="submit"] {\
+    margin-left: 90px;\
+    border-radius: 5px;\
+}\
+input[type="password"] {\
+    width: 320px;\
+    border-radius: 5px;\
+}\
+.profile-head h5 {\
+    margin-left: 92px;\
+    margin-top: 20px;\
+}\
+.profile-head h6 {\
+    margin-left: -4px;\
+    margin-top: 20px;\
+}\
+th h5 {\
+    font-size: 10px;\
+}\
+table {\
+    margin-left: -12px;\
+}\
+.searchInput {\
+    display: none;\
+}\
+.profile-work button {\
+    margin-left: 70px;\
+}\
+}\
+
+`}
+        </style>
         {
             userrData.userr ?
                 <span>
@@ -308,10 +468,17 @@ export default function EditProfile() {
                                     </h6><br/>
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">
-                                <a className="nav-link active" id="home-tab" data-toggle="tab"
+                                <a className="nav-link" id="home-tab" data-toggle="tab"
                                    href="/account" role="tab" aria-controls="home" aria-selected="true">
                                     <span style={{color: '#021144', fontFamily: 'Felix Titling',
                                        fontWeight: 'bold'}}> About Me </span>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link active" id="home-tab" data-toggle="tab"
+                                   href="/account/edit" role="tab" aria-controls="home" aria-selected="true">
+                                    <span style={{color: '#021144', fontFamily: 'Felix Titling',
+                                       fontWeight: 'bold'}}> Edit My Account </span>
                                 </a>
                             </li>
                             <li className="nav-item">
@@ -342,8 +509,10 @@ export default function EditProfile() {
                 <div className="col-md-4">
                     <div className="profile-work">
                     <p style={{fontFamily: 'Felix Titling'}}>ACCOUNT</p>
-                            <a href="/account" style = {{color: '#021144',
+                            <a href="/account" style = {{color: '#212529',
                         fontFamily: 'Felix Titling'}}>About Me</a><br/>
+                        <a href="/account/edit" style = {{color: '#021144',
+                        fontFamily: 'Felix Titling'}}>Edit My Account</a><br/>
                             {/*<a href="" style = {{color:'#212529'}}>Security</a><br/>*/}
                             <a href="/account/change-password" style = {{color:'#212529',
                         fontFamily: 'Felix Titling'}}>Change My Password</a>
@@ -366,7 +535,7 @@ export default function EditProfile() {
                     <div id="myTabContent">
                         <div id="home" 
                         role="tabpanel" aria-labelledby="home-tab">
-                            <form onSubmit={editProfile}>
+                            <form onSubmit={editProfile} className="formEdit">
                             <div className="row" style={{marginTop: '150px;'}}>
                                 <div className="col-md-6">
                                     <label style={{fontFamily: 'Felix Titling'}}>First Name:
@@ -806,7 +975,7 @@ export default function EditProfile() {
 	color: #070C29;\
 	font-family: Felix Titling;\
 	margin-top: 30px;\
-    margin-left: 350px;\
+    margin-left: 210px;\
 	padding:15px 30px 15px 30px;\
 	font-size: 13px;\
 	font-weight: 600;\
@@ -844,8 +1013,8 @@ margin-left: 300px;\
   </style>
   <div className="container">
       <div className="section-header">
-          <h2 className="wow fadeInDown animated" 
-          style={{fontFamily: 'Felix Titling', color: 'rgb(209, 178, 62)'}}>Contact Us</h2>
+          <nobr><h2 className="wow fadeInDown animated"
+          style={{fontFamily: 'Felix Titling', color: 'rgb(209, 178, 62)'}}>Contact Us</h2></nobr>
       </div>
     <div className="row">
       <div className="col-md-8 col-md-offset-2 conForm">

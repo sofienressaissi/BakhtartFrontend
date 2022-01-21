@@ -12,7 +12,7 @@ const logout = () => {
         window.location.reload();
     }
 
-export const Menu = ({ isMenuOpen }: IMenuProps) => {
+export const MenuAccount = ({ isMenuOpen }: IMenuProps) => {
   return (
       <>
           <style>
@@ -40,10 +40,10 @@ export const Menu = ({ isMenuOpen }: IMenuProps) => {
       `}
           </style>
     <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
-        <ul className="primary-nav" style={{marginTop: '100px'}}>
+        <ul className="primary-nav">
             <li style={{marginLeft: '-25px'}}>
             <a href = "/">
-        <img className="logo" src="../../assets/images/logoBakhtSiren.png" style={{marginTop: '7px'}}/>
+        <img className="logo" src="../assets/images/logoBakhtSiren.png"/>
         </a>
 
           </li><br/>
@@ -79,7 +79,7 @@ export const Menu = ({ isMenuOpen }: IMenuProps) => {
         style={{color: '#D1B23E', fontFamily: 'Felix Titling', fontWeight: 'bold', fontSize: '30px'}}
     >
         <FaPhone/>
-    </a></li><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </a></li><br/><br/><br/><br/><br/>
             <li>
           <a href="/cart" style={{color: '#D1B23E', fontFamily: 'Felix Titling', fontWeight: 'bold', fontSize: '30px'}}>
             <i className="fa fa-shopping-cart"></i></a></li><br/>

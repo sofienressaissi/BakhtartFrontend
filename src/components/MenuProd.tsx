@@ -12,7 +12,7 @@ const logout = () => {
         window.location.reload();
     }
 
-export const Menu = ({ isMenuOpen }: IMenuProps) => {
+export const MenuProd = ({ isMenuOpen }: IMenuProps) => {
   return (
       <>
           <style>
@@ -41,7 +41,7 @@ export const Menu = ({ isMenuOpen }: IMenuProps) => {
           </style>
     <div className={`app-menu ${isMenuOpen ? "menu-open" : ""}`}>
         <ul className="primary-nav" style={{marginTop: '100px'}}>
-            <li style={{marginLeft: '-25px'}}>
+            <li style={{marginLeft: '-13px'}}>
             <a href = "/">
         <img className="logo" src="../../assets/images/logoBakhtSiren.png" style={{marginTop: '7px'}}/>
         </a>

@@ -9,6 +9,9 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 import ScrollUpButton from "react-scroll-up-button";
 import UserContext from "../context/UserContext";
 import Axios from "axios";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {MenuAccount} from "../components/MenuAccount";
+import {ReactDimmer} from "react-dimmer";
 
 export default function Account() {
 
@@ -17,6 +20,7 @@ export default function Account() {
     const [email, setEmail] = useState();
     const [subject, setSubject] = useState();
     const [content, setContent] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
 
     let { speak } = useSpeechSynthesis();
 
@@ -27,6 +31,9 @@ export default function Account() {
         history.push("/login");
         window.location.reload();
     }
+    const handleMenu = () => {
+        setMenu((prevState) => !prevState);
+    };
     const logout = () => {
         setUserrData({
             token: undefined,
@@ -88,13 +95,146 @@ export default function Account() {
             <a href = "/">
             <img className="logo" src="../assets/images/logoBakhtSiren.png" alt = "BakhtArt Logo"/>
             </a>
-            <nav className="navigation" role="navigation">
-        
 
-        </nav>
+            <nav className="navigation" role="navigation">
+            </nav>
+            <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
+        <MenuAccount isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
+            <style>
+                {
+                  `\
+                  @media screen and (max-width: 600px){\
+    #map-overlay {\
+        height: 400px;\
+        margin-top: 0px;\
+        width: 377px;\
+        margin-left: -17px;\
+        background-color: #070C29;\
+        color: #D1B23E;\
+        text-align: center;\
+    }\
+    .navigation ul {\
+        display: inline;\
+    }\
+    .navigation span {\
+        display: inline;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    #header {\
+        position: fixed;\
+        width: 100%;\
+        height: 13%;\
+        z-index: 999;\
+        background: rgb(2, 17, 68, 0.5);\
+    }\
+    .navigation span .account {\
+        left: -100px;\
+        font-weight: bold;\
+        display: none;\
+    }\
+    .navigation .shopping-item {\
+        left: 90px;\
+        top: -4px;\
+        font-size: 2px;\
+        display: none;\
+    }\
+    .logoutB {\
+        left: 230px;\
+        height: 40px;\
+    }\
+    .logo {\
+        margin-left: 15px;\
+        margin-top: 10px;\
+    }\
+    .footer {\
+        background: white;\
+        display: none;\
+    }\
+    .account {\
+        display: none;\
+    }\
+    .emp-profile {\
+        width: 368px;\
+        left: 10px;\
+        margin-top: 10%;\
+    }\
+    .container {\
+        margin-left: 12px;\
+    }\
+    .loginB {\
+        display: none;\
+    }\
+    .logoutB {\
+        display: none;\
+    }\
+    .menu-btn {\
+  font-size: 2.75rem;\
+  margin-left: 325px;\
+  margin-top: -18px;\
+  color: rgb(209, 167, 62);\
+  cursor: pointer;\
+  display: none;\
+}\
+.section-header h2 {\
+    margin-left: -55px;\
+    font-size: 20px;\
+}\
+form input[type="text"], form input[type="email"] {\
+    width: 368px;\
+    left: -42px;\
+    border-radius: 5px;\
+}\
+form #message {\
+    width: 368px;\
+    left: -42px;\
+    border-radius: 5px;\
+}\
+.submitBnt {\
+    border-radius: 0px;\
+}\
+.profile-edit-btn {\
+    margin-left: 0px;\
+    display: none;\
+}\
+th h5 {\
+    font-size: 10px;\
+}\
+.profile-head .nav-tabs {\
+    display: none;\
+}\
+table {\
+    margin-left: -12px;\
+}\
+.searchInput {\
+    display: none;\
+}\
+.profile-work {\
+    margin-left: -40px;\
+}\
+.profile-head h5 {\
+    margin-left: 92px;\
+    margin-top: 20px;\
+}\
+.profile-head h6 {\
+    margin-left: 89px;\
+    margin-top: 20px;\
+}\
+}\
+
+`}
+            </style>
         {
             userrData.userr ?
             <span>
+
               <a href="/account" className="account"
               style={{color: '#D1B23E', fontFamily: 'Felix Titling'}}><FaUser/> Account</a>
             <button className="logoutB"
@@ -102,10 +242,12 @@ export default function Account() {
                 Logout
             </button>
             </span> :
-        <button className="loginB"
+        <>
+            <button className="loginB"
         onClick = {login} style={{color: '#D1B23E', backgroundColor: 'transparent', fontFamily: 'Felix Titling'}}>
           <FaSignInAlt/> Login
         </button>
+            </>
         }
 <div className="container emp-profile">
                 <div className="row">
@@ -156,6 +298,13 @@ export default function Account() {
                                     </a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link" id="home-tab" data-toggle="tab"
+                                    href="/account/edit" role="tab" aria-controls="home" aria-selected="true">
+                                       <span style={{color: '#021144', fontFamily: 'Felix Titling',
+                                       fontWeight: 'bold'}}> Edit My Account </span>
+                                    </a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link" id="profile-tab" data-toggle="tab"
                                     href="/account/change-password" role="tab" aria-controls="profile"
                                     aria-selected="false" style={{fontFamily: 'Felix Titling'}}>Change My Password</a>
@@ -180,7 +329,7 @@ export default function Account() {
                     </div>
                     <div className="col-md-2">
                         <a href = "/account/edit">
-                        <input type="submit" style = {{width: '150px', fontFamily: 'Felix Titling'}} className="profile-edit-btn" name="btnAddMore" value="Edit My Account"/>
+                        <input type="submit" style = {{width: '150px', fontFamily: 'Felix Titling', display: 'none'}} className="profile-edit-btn" name="btnAddMore" value="Edit My Account"/>
                         </a>
                         </div>
                 </div>
@@ -190,6 +339,8 @@ export default function Account() {
                             <p style={{fontFamily: 'Felix Titling'}}>ACCOUNT</p>
                             <a href="/account" style = {{color: '#021144',
                         fontFamily: 'Felix Titling'}}>About Me</a><br/>
+                            <a href="/account/edit"
+                            style = {{color: '#212529', fontFamily: 'Felix Titling'}}>Edit My Account</a><br/>
                             <a href="/account/change-password" style = {{color:'#212529',
                         fontFamily: 'Felix Titling'}}>Change My Password</a>
                             <p style={{fontFamily: 'Felix Titling'}}>PRODUCTS</p>
@@ -366,7 +517,7 @@ export default function Account() {
 	color: #070C29;\
 	font-family: Felix Titling;\
 	margin-top: 30px;\
-    margin-left: 350px;\
+    margin-left: 200px;\
 	padding:15px 30px 15px 30px;\
 	font-size: 13px;\
 	font-weight: 600;\
@@ -404,8 +555,8 @@ margin-left: 300px;\
   </style>
   <div className="container">
       <div className="section-header">
-          <h2 className="wow fadeInDown animated" 
-          style={{fontFamily: 'Felix Titling', color: 'rgb(209, 178, 62)'}}>Contact Us</h2>
+          <nobr><h2 className="wow fadeInDown animated"
+          style={{fontFamily: 'Felix Titling', color: 'rgb(209, 178, 62)'}}>Contact Us</h2></nobr>
       </div>
     <div className="row">
       <div className="col-md-8 col-md-offset-2 conForm">
@@ -454,7 +605,7 @@ z-index: 1;\
   {`\
     .contactusFooter {\
         font-size: 40px;\
-color: #D1B23E;\
+        color: #D1B23E;\
     }\
   `}
   {`\

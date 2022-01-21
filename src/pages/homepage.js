@@ -266,10 +266,7 @@ export default function Homepage() {
         display: none;\
     }\
     #header {\
-        position: fixed;\
-        width: 100%;\
         height: 13%;\
-        z-index: 999;\
         background: rgb(2, 17, 68, 0.5);\
     }\
     .navigation span .account {\
@@ -289,7 +286,7 @@ export default function Homepage() {
     }\
     .logo {\
         margin-left: 0px;\
-        margin-top: 5px;\
+        margin-top: -5px;\
     }\
     .footer {\
         background: white;\

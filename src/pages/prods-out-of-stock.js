@@ -8,6 +8,9 @@ import UserContext from "../context/UserContext";
 import Pagination from '../pagination/pagination';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import Axios from 'axios';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MenuProd } from "../components/MenuProd";
+import { ReactDimmer } from "react-dimmer";
 
 let PageSize = 8;
 
@@ -18,6 +21,11 @@ export default function ProdsOutOfStock() {
     const [email, setEmail] = useState();
     const [subject, setSubject] = useState();
     const [content, setContent] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+    setMenu((prevState) => !prevState);
+  };
 
   let { speak } = useSpeechSynthesis();
 
@@ -331,7 +339,14 @@ export default function ProdsOutOfStock() {
         </button>
         }
       </nav>
-
+        <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
+        <MenuProd isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
       {/*<a href="#" className="nav-toggle">Menu<span></span></a>*/} </div>
   </header><br/><br/><br/><br/>
   <br/><br/>
@@ -487,6 +502,9 @@ export default function ProdsOutOfStock() {
     .contactusFooter {\
         margin-top: -25px;\
     }\
+    .single-product .product-hover {\
+        height: 105%;\
+    }\
     #map-overlay {\
         height: 400px;\
         margin-top: 0px;\
@@ -504,23 +522,31 @@ export default function ProdsOutOfStock() {
     }\
     #header {\
         width: 96.1%;\
+        height: 10%;\
     }\
     .navigation span .account {\
         left: -120px;\
         font-weight: bold;\
+        display: none;\
     }\
     .navigation .shopping-item {\
         left: 104px;\
         top: -9px;\
         font-size: 2px;\
+        display: none;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    .loginB {\
+        display: none;\
     }\
     .logoutB {\
-        left: 230px;\
-        height: 40px;\
+        display: none;\
     }\
     .logo {\
-        margin-left: 100px;\
-        margin-top: -4px;\
+        margin-left: -15px;\
+        margin-top: -13px;\
     }\
     .footer {\
         background: white;\

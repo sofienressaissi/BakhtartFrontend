@@ -12,6 +12,9 @@ import UserContext from "../context/UserContext";
 import Pagination from '../pagination/pagination';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import Axios from 'axios';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MenuProd } from "../components/MenuProd";
+import { ReactDimmer } from "react-dimmer";
 
 let PageSize = 3;
 
@@ -22,6 +25,11 @@ export default function ProdDetail() {
     const [email, setEmail] = useState();
     const [subject, setSubject] = useState();
     const [content, setContent] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+    setMenu((prevState) => !prevState);
+  };
 
   let { speak } = useSpeechSynthesis();
 
@@ -343,9 +351,7 @@ export default function ProdDetail() {
         <>
         <html>
           <head>
-            <title>Bakht'Art - 
-            {bakhtartCats.length}
-                {
+            <title>Bakht'Art - {
                     bakhtartProds.map((itemp => (
                         bakhtartCats.map((itemc => (
                             getCatName.startsWith(itemp.productCategory) &&
@@ -534,7 +540,14 @@ export default function ProdDetail() {
         </button>
         }
       </nav>
-
+        <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
+        <MenuProd isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
       {/*<a href="#" className="nav-toggle">Menu<span></span></a>*/} </div>
   </header><br/><br/><br/><br/>
   <br/><br/>
@@ -809,7 +822,7 @@ export default function ProdDetail() {
                             <img src={`${itemp.productImage}`} 
                             alt="If the image is not loaded,  
                             click on it to see it or refresh the page!
-                                Otherwise, it will appear in a few seconds. This is Firebase issues!"
+                                Otherwise, it will appear in a few seconds."
                             name="Open product image in new tab"/>
                             <div className="product-hover">
                             <button
@@ -1212,7 +1225,7 @@ export default function ProdDetail() {
                         <img src={`${itemp.productImage}`} 
                         alt="If the image is not loaded,  
                         click on it to see it or refresh the page!
-                            Otherwise, it will appear in a few seconds. This is Firebase issues!"
+                            Otherwise, it will appear in a few seconds."
                         name="Open product image in new tab"/></a>
                         </> : <></>
                         )))
@@ -1362,13 +1375,31 @@ export default function ProdDetail() {
         border-radius: 5px;\
     }\
     .container button {\
-        margin-left: 0px;\
+        margin-left: 44px;\
+    }\
+    .product-main-img {\
+        text-align: center;\
+    }\
+    .single-product img {\
+        margin-left: 55px;\
+    }\
+    .product-hover {\
+        height: 105%;\
+    }\
+    .col-sm-6 .enabBtn {\
+        margin-left: 94px;\
+    }\
+    .btn .btn-danger {\
+        margin-left: 94px;\
     }\
     #section-profile p {\
         margin-left: -75px;\
     }\
     #section-profile {\
         height: 433px;\
+    }\
+    .rating {\
+        margin-left: 22px;\
     }\
     #products {\
         padding: 30px 0;\
@@ -1378,6 +1409,9 @@ export default function ProdDetail() {
     }\
     .no-gutter [class*=col-] {\
         margin-top: 60px;\
+    }\
+    iframe {\
+        display: none;\
     }\
     .work img {\
         width: 85%;\
@@ -1399,9 +1433,16 @@ export default function ProdDetail() {
     }\
     .conForm .submitBnt {\
         font-size: 8px;\
+        margin-left: 10px;\
     }\
     .contactusFooter {\
         margin-top: -25px;\
+    }\
+    .loginB {\
+        display: none;\
+    }\
+    .logoutB {\
+        display: none;\
     }\
     #map-overlay {\
         height: 400px;\
@@ -1415,15 +1456,27 @@ export default function ProdDetail() {
     .navigation ul {\
         display: inline;\
     }\
+    .navigation span .account {\
+        left: -120px;\
+        font-weight: bold;\
+        display: none;\
+    }\
+    .navigation .shopping-item {\
+        left: 104px;\
+        top: -9px;\
+        font-size: 2px;\
+        display: none;\
+    }\
     iframe {\
         display: none;\
     }\
     #header {\
         width: 100%;\
+        height: 11%;\
     }\
     .logo {\
-        margin-left: 129px;\
-        margin-top: -4px;\
+        margin-left: -15px;\
+        margin-top: -1px;\
     }\
     .footer {\
         background: white;\
@@ -1494,6 +1547,7 @@ export default function ProdDetail() {
       <h6 style={{fontFamily: 'Felix Titling', fontWeight: 'bold', color: '#021144'}}>
         Your Rate: {itemr.rateValue} out of 5
         </h6> <Rating
+        className="rating"
         name="hover-feedback"
         value={itemr.rateValue}
         precision={0.5}
@@ -1509,6 +1563,7 @@ export default function ProdDetail() {
                               <>
                               <div className = {classes.root} style={{marginLeft: '65px'}}>
                             <Rating
+        className="rating"
         name="hover-feedback"
         value={value}
         precision={0.5}
@@ -1824,7 +1879,7 @@ export default function ProdDetail() {
                         <div className="single-product">
                         <img src={`${itemp.productImage}`} alt="If the image is not loaded,  
                         refresh the page!
-                            Otherwise, it will appear in a few seconds. This is Firebase issues!"
+                            Otherwise, it will appear in a few seconds."
                         name="Open product image in new tab"/>
                         <div className="product-hover">
                         <button className="add-to-cart-link" onClick = {() => addSeenProd(itemp._id, itemp.productCategory)}

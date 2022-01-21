@@ -9,6 +9,9 @@ import { toast } from 'toast-notification-alert';
 import UserContext from "../context/UserContext";
 import Pagination from '../pagination/pagination';
 import Axios from 'axios';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Menu } from "../components/Menu";
+import { ReactDimmer } from "react-dimmer";
 
 let PageSize = 3;
 
@@ -19,6 +22,11 @@ export default function CartBakht() {
     const [email, setEmail] = useState();
     const [subject, setSubject] = useState();
     const [content, setContent] = useState();
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+    setMenu((prevState) => !prevState);
+  };
 
   let { speak } = useSpeechSynthesis();
 
@@ -183,6 +191,149 @@ export default function CartBakht() {
           </li>
         </ul>
         <style>
+            {
+                  `\
+                  @media screen and (max-width: 740px){\
+    .container h4 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container h1 {\
+        text-align: left;\
+        font-size: 20px;\
+        background-color: white;\
+        border-radius: 5px;\
+    }\
+    .container button {\
+        margin-left: 0px;\
+    }\
+    #section-profile p {\
+        margin-left: -75px;\
+    }\
+    #section-profile {\
+        height: 433px;\
+    }\
+    #products {\
+        padding: 30px 0;\
+    }\
+    #products .container .section-header {\
+        padding-bottom: 0px;\
+    }\
+    .no-gutter [class*=col-] {\
+        margin-top: 60px;\
+    }\
+    .work img {\
+        width: 85%;\
+        height: 85%;\
+        display: block;\
+        margin-left: auto;\
+        margin-right: auto;\
+    }\
+    #contactus {\
+        padding: 0px 0;\
+    }\
+    .section-header h2 {\
+        font-size: 30px;\
+    }\
+    .profile-desc .section-title {\
+        font-size: 30px;\
+        text-align: center;\
+        margin-left: -75px;\
+    }\
+    .conForm .submitBnt {\
+        font-size: 8px;\
+    }\
+    .contactusFooter {\
+        margin-top: -25px;\
+    }\
+    #map-overlay {\
+        height: 400px;\
+        margin-top: 0px;\
+        width: 377px;\
+        margin-left: -17px;\
+        background-color: #070C29;\
+        color: #D1B23E;\
+        text-align: center;\
+    }\
+    .navigation ul {\
+        display: inline;\
+    }\
+    .nav-toggle {\
+        margin-top: 10px;\
+    }\
+    .navigation span {\
+        display: inline;\
+    }\
+    iframe {\
+        display: none;\
+    }\
+    .continuePurchase[type="submit"] {\
+        display: none;\
+    }\
+    .checkoutbtn {\
+        border-radius: 5px;\
+        margin-right: -64px;\
+    }\
+    #header {\
+        position: fixed;\
+        width: 100%;\
+        height: 13%;\
+        z-index: 999;\
+        background: rgb(2, 17, 68, 1);\
+    }\
+    th h5 {\
+    font-size: 8px;\
+}\
+td span {\
+    font-size: 8px;\
+}\
+table {\
+    margin-left: -8px;\
+}\
+    .navigation span .account {\
+        left: -150px;\
+        font-weight: bold;\
+        display: none;\
+    }\
+    .navigation .shopping-item {\
+        left: 90px;\
+        top: -4px;\
+        font-size: 2px;\
+        display: none;\
+    }\
+    .logoutB {\
+        left: 230px;\
+        height: 40px;\
+    }\
+    .logo {\
+        margin-left: 0px;\
+        margin-top: 5px;\
+    }\
+    .footer {\
+        background: white;\
+    }\
+    .woocommerce h3 {\
+        text-align: center;\
+    }\
+    .loginB {\
+        display: none;\
+    }\
+    .logoutB {\
+        display: none;\
+    }\
+    .menu-btn {\
+  font-size: 2.75rem;\
+  margin-left: 325px;\
+  margin-top: -18px;\
+  color: rgb(209, 167, 62);\
+  cursor: pointer;\
+  display: none;\
+}\
+}\
+
+`}
         {`\
         .shopping-item {\
     float: right;\
@@ -326,7 +477,15 @@ export default function CartBakht() {
         }
       </nav>
 
-      <a href="#" className="nav-toggle">Menu<span></span></a> </div>
+      {/*<a href="#" className="nav-toggle">Menu<span></span></a>*/}
+    <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
+        <Menu isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      /></div>
   </header>
   <br/><br/><br/><br/>
   <br/><br/>
