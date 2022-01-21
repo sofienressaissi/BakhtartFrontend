@@ -306,7 +306,7 @@ export default function Homepage() {
   margin-top: -18px;\
   color: rgb(209, 167, 62);\
   cursor: pointer;\
-  visibility: visible;\
+  display: none;\
 }\
 }\
 
@@ -388,13 +388,6 @@ export default function Homepage() {
 }\
       `}
         </style>
-          <style>
-              {`\
-        .menu-btn {\
-  opacity: 1;\
-}\
-      `}
-          </style>
         <style>
           {`\
         .shopping-item {\
@@ -501,14 +494,14 @@ export default function Homepage() {
         }
       </nav>
       {/*<a href="#" className="nav-toggle">Menu<span>llllllll</span></a>*/}
-        <div className="hiddenOrNot"><GiHamburgerMenu className="menu-btn" onClick={handleMenu}/>
+        <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/>
         <Menu isMenuOpen={isMenuOpen} />
         <ReactDimmer
         isOpen={isMenuOpen}
         exitDimmer={setMenu}
         zIndex={100}
         blur={1.5}
-      /></div>
+      />
     </div>
   </header>
   <div className="container">
