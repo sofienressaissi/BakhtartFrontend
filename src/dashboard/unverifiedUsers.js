@@ -462,7 +462,7 @@ export default function DashboardHome() {
                                     margin-left: -12px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 8px;\
+                                    font-size: 7.2px;\
                                     margin-left: -10px;\
                                     overflow: hidden;\
                                 }\

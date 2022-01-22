@@ -475,7 +475,7 @@ export default function Messages() {
                                     margin-left: -12px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 6.4px;\
+                                    font-size: 5.8px;\
                                     margin-left: -12px;\
                                     overflow: hidden;\
                                 }\

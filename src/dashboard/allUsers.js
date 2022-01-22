@@ -406,7 +406,7 @@ export default function AllUsers() {
                                     margin-left: -12px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 6px;\
+                                    font-size: 5.3px;\
                                     margin-left: -12px;\
                                     overflow: hidden;\
                                 }\

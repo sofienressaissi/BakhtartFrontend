@@ -389,7 +389,7 @@ export default function OutOfStockProducts() {
                                     margin-left: -12px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 12px;\
+                                    font-size: 10.5px;\
                                     margin-left: -10px;\
                                     overflow: hidden;\
                                 }\

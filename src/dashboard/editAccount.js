@@ -476,7 +476,7 @@ export default function EditAccount() {
                                     margin-left: -150px;\
                                 }\
                                 .edit-password {\
-                                    margin-top: -60px;\
+                                    margin-top: -62px;\
                                 }\
                                 td button {\
                                     margin-left: -10px;\
@@ -486,7 +486,7 @@ export default function EditAccount() {
                                     height: 608px;\
                                 }\
                                 .btnUpdatePass {\
-                                    margin-left: 100px;\
+                                    margin-left: 88px;\
                                     margin-top: -18px;\
                                 }\
                                 .btnUpdate {\
