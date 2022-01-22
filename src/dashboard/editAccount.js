@@ -482,6 +482,9 @@ export default function EditAccount() {
                                     margin-left: -10px;\
                                     height: 20px;\
                                 }\
+                                input[type="number"] {\
+                                    width: 230px;\
+                                }\
                                 .card {\
                                     height: 608px;\
                                 }\
@@ -490,8 +493,8 @@ export default function EditAccount() {
                                     margin-top: -18px;\
                                 }\
                                 .btnUpdate {\
-                                    margin-left: 120px;\
-                                    margin-top: -18px;\
+                                    margin-left: 240px;\
+                                    margin-top: -115px;\
                                 }\
                                 .dashboardBody {\
                                     position: fixed;\
