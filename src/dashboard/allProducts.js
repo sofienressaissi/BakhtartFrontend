@@ -389,7 +389,7 @@ export default function AllProducts() {
                                     margin-left: -12px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 6px;\
+                                    font-size: 5.7px;\
                                     margin-left: -10px;\
                                     overflow: hidden;\
                                 }\

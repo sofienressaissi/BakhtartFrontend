@@ -12,7 +12,7 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import {MenuAdmin} from "../components/MenuAdmin";
 import {ReactDimmer} from "react-dimmer";
 
-let PageSize = 5;
+let PageSize = 4;
 
 export default function AllCategories() {
 

@@ -476,7 +476,7 @@ export default function EditAccount() {
                                     margin-left: -150px;\
                                 }\
                                 .edit-password {\
-                                    margin-top: -62px;\
+                                    margin-top: -80px;\
                                 }\
                                 td button {\
                                     margin-left: -10px;\
