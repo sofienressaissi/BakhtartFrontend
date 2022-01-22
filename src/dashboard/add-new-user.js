@@ -8,6 +8,9 @@ import { FaDoorOpen, FaStar, FaUsers, FaUserEdit, FaTrash,
 import UserContext from "../context/UserContext";
 import { toast } from 'toast-notification-alert';
 import emailjs from "emailjs-com";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {MenuAdmin} from "../components/MenuAdmin";
+import {ReactDimmer} from "react-dimmer";
 
 export default function AddNewUser() {
 
@@ -29,6 +32,12 @@ export default function AddNewUser() {
       allMsgs.map((itemu,index)=>{
         itemu.status === false ? nbUM = nbUM + 1 : <></>
       });
+
+      const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+        setMenu((prevState) => !prevState);
+    };
 
     const history = useHistory();
 
@@ -116,8 +125,7 @@ export default function AddNewUser() {
   <div id="pcoded" className="pcoded">
       <div className="pcoded-overlay-box"></div>
       <div className="pcoded-container navbar-wrapper">
-          <nav className="navbar header-navbar pcoded-header" 
-          style={{backgroundColor: '#070C29'}}>
+          <nav className="navbar header-navbar pcoded-header">
               <div className="navbar-wrapper">
                   <div className="navbar-logo">
                       
@@ -129,7 +137,15 @@ export default function AddNewUser() {
                       </a><span style={{color: '#D3BE06', fontWeight: 'bold',
                       fontFamily: 'Felix Titling'}}>Art</span>
                   </div>
-                
+                  <div className="hambMenu">
+                    <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/></div>
+        <MenuAdmin isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
                   <div className="navbar-container container-fluid">
                       <ul className="nav-left">
                           <li>
@@ -359,6 +375,85 @@ export default function AddNewUser() {
                           </div>
                       </div>
                     </div>
+                  <style>
+                      {
+                          `\
+                           @media screen and (max-width: 740px){\
+                                .main-menu, .usernameH, .usernameD, .genderH, .genderD, .accountCH, .accountCD, .imageH, .imageD {\
+                                    display: none;\
+                                }\
+                                table {\
+                                    margin-left: -12px;\
+                                }\
+                                .table-responsive {\
+                                    font-size: 6px;\
+                                    margin-left: -12px;\
+                                    overflow: hidden;\
+                                }\
+                                .dashboardBody {\
+                                    background: none;\
+                                    margin-top: 16px;\
+                                }\
+                                .navbar {\
+                                    background: none;\
+                                }\
+                                .navbar-logo span {\
+                                    display: none;\
+                                }\
+                                .page-header {\
+                                    display: none;\
+                                }\
+                                .navbar-logo img {\
+                                    margin-top: -37px;\
+                                }\
+                                .hambMenu {\
+                                    margin-top: -39px;\
+                                }\
+                                .navbar-logo {\
+                                    margin-left: -150px;\
+                                }\
+                                td button {\
+                                    margin-left: -10px;\
+                                    height: 20px;\
+                                }\
+                                .card {\
+                                    height: 608px;\
+                                }\
+                                input[type="submit"] {\
+                                    margin-left: 118px;\
+                                }\
+                                .dashboardBody {\
+                                    position: fixed;\
+                                }\
+                                .searchItem {\
+                                    width: 190px;\
+                                    margin-right: 190px;\
+                                    margin-top: 16px;\
+                                }\
+                                .nav-toggle {\
+                                    color: rgb(211, 190, 6);\
+                                    margin-left: 111px;\
+                                }\
+                                .nav-toggle {\
+display: inline;\
+height: 30px;\
+overflow: hidden;\
+position: fixed;\
+right: 6%;\
+text-indent: 100%;\
+top: 20px;\
+white-space: nowrap;\
+color: #D1B23E;\
+width: 44px;\
+z-index: 99999;\
+-moz-transition: all 0.3s;\
+-o-transition: all 0.3s;\
+-webkit-transition: all 0.3s;\
+transition: all 0.3s;\
+}
+                            }\
+                          `}
+                  </style>
                     {/* Form Add Category */}
                     <div className="card">
                          <div className="card-header">

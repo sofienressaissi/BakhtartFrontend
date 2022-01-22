@@ -8,6 +8,9 @@ import { FaDoorOpen, FaStar, FaUsers, FaUserEdit, FaTrash,
 import { toast } from 'toast-notification-alert';
 import UserContext from "../context/UserContext";
 import Pagination from '../pagination/pagination';
+import {GiHamburgerMenu} from "react-icons/gi";
+import {MenuAdmin} from "../components/MenuAdmin";
+import {ReactDimmer} from "react-dimmer";
 
 let PageSize = 5;
 
@@ -18,6 +21,12 @@ export default function AllCategories() {
     const { userrData, setUserrData } = useContext(UserContext);
 
     let [bakhtartCats, setBakhtartCats] = useState([]);
+
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+        setMenu((prevState) => !prevState);
+    };
 
     let [searchItem, setSearchItem] = useState('');
 
@@ -87,8 +96,7 @@ export default function AllCategories() {
   <div id="pcoded" className="pcoded">
       <div className="pcoded-overlay-box"></div>
       <div className="pcoded-container navbar-wrapper">
-          <nav className="navbar header-navbar pcoded-header" 
-          style={{backgroundColor: '#070C29'}}>
+          <nav className="navbar header-navbar pcoded-header">
               <div className="navbar-wrapper">
                   <div className="navbar-logo">
                       
@@ -100,7 +108,15 @@ export default function AllCategories() {
                       </a><span style={{color: '#D3BE06', fontWeight: 'bold',
                       fontFamily: 'Felix Titling'}}>Art</span>
                   </div>
-                
+                <div className="hambMenu">
+                    <GiHamburgerMenu className="nav-toggle" onClick={handleMenu}/></div>
+        <MenuAdmin isMenuOpen={isMenuOpen} />
+        <ReactDimmer
+        isOpen={isMenuOpen}
+        exitDimmer={setMenu}
+        zIndex={100}
+        blur={1.5}
+      />
                   <div className="navbar-container container-fluid">
                       <ul className="nav-left">
                           <li>
@@ -339,6 +355,83 @@ export default function AllCategories() {
         }\
       `}
                     </style>
+                  <style>
+                      {
+                          `\
+                           @media screen and (max-width: 740px){\
+                                .main-menu, .addedByH, .addedByD, .genderH, .genderD, .accountCH, .accountCD, .imageH, .imageD {\
+                                    display: none;\
+                                }\
+                                table {\
+                                    margin-left: -12px;\
+                                }\
+                                .table-responsive {\
+                                    font-size: 12px;\
+                                    margin-left: -10px;\
+                                    overflow: hidden;\
+                                }\
+                                td img {\
+                                    width: 100px;\
+                                    height: 55px;\
+                                }\
+                                .dashboardBody {\
+                                    background: none;\
+                                    margin-top: 16px;\
+                                }\
+                                .navbar {\
+                                    background: none;\
+                                }\
+                                .navbar-logo span {\
+                                    display: none;\
+                                }\
+                                .page-header {\
+                                    display: none;\
+                                }\
+                                .navbar-logo img {\
+                                    margin-top: -38px;\
+                                }\
+                                .hambMenu {\
+                                    margin-top: -39px;\
+                                }\
+                                .navbar-logo {\
+                                    margin-left: -150px;\
+                                }\
+                                td button {\
+                                    margin-left: -10px;\
+                                    height: 20px;\
+                                }\
+                                .dashboardBody {\
+                                    position: fixed;\
+                                }\
+                                .searchItem {\
+                                    width: 190px;\
+                                    margin-right: 190px;\
+                                    margin-top: 16px;\
+                                }\
+                                .nav-toggle {\
+                                    color: rgb(211, 190, 6);\
+                                    margin-left: 111px;\
+                                }\
+                                .nav-toggle {\
+display: inline;\
+height: 30px;\
+overflow: hidden;\
+position: fixed;\
+right: 6%;\
+text-indent: 100%;\
+top: 20px;\
+white-space: nowrap;\
+color: #D1B23E;\
+width: 44px;\
+z-index: 99999;\
+-moz-transition: all 0.3s;\
+-o-transition: all 0.3s;\
+-webkit-transition: all 0.3s;\
+transition: all 0.3s;\
+}
+                            }\
+                          `}
+                  </style>
                     <div className="card">
                                             <div className="card-header">
                                                 <h5>All Categories</h5>
