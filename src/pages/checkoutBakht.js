@@ -51,13 +51,14 @@ export default function CheckoutBakht() {
     let [nb_pc]= useState(0);
     let [totalQt] = useState(0);
 
-    const deleteProdFromCart = async (productId) => {
+    const deleteProdFromCart = async (productId, userId) => {
         try {
             const prodToCart = {
-                productId: productId
+                productId: productId,
+                userId: userId
             };
             await Axios.delete(
-                "https://bakhtart-backend.herokuapp.com/fashion/delete-prod-from-cart/"+productId,
+                "https://bakhtart-backend.herokuapp.com/fashion/delete-prod-from-cart/"+productId+"/"+userId,
                 prodToCart
             );
             toast.show({title: 'Deleted From Cart!',
@@ -1377,7 +1378,7 @@ table {\
     <FaTrash style = {{color: 'red', fontFamily: 'Felix Titling'}}/> 
     <button type="button" style={{background: 'none', border: 'none', color: 'red', 
     fontFamily: 'Felix Titling', fontWeight: 'bold'}}
-    onClick={() => deleteProdFromCart(itempc.productId)}>
+    onClick={() => deleteProdFromCart(itempc.productId, userrData.userr.id)}>
             Delete From Cart
           </button>
 </td>

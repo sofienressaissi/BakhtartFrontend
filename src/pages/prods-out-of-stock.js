@@ -521,8 +521,8 @@ export default function ProdsOutOfStock() {
         display: none;\
     }\
     #header {\
-        width: 96.1%;\
-        height: 10%;\
+        width: 100%;\
+        height: 12%;\
     }\
     .navigation span .account {\
         left: -120px;\

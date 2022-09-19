@@ -522,7 +522,7 @@ export default function ProdsSingleCategory() {
     }\
     #header {\
         width: 96.1%;\
-        height: 10%;\
+        height: 12%;\
     }\
     .navigation span .account {\
         left: -120px;\

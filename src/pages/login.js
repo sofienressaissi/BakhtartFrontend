@@ -116,7 +116,16 @@ export default function Login() {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"></link>
             </head>
         <body style={{backgroundColor: '#666666'}}>
-	
+	<style>
+		{
+                  `\
+                  @media screen and (max-width: 740px){\
+                  	.noAccReg {\
+                  		margin-left: -28px;\
+                  	}\
+                  }\
+                  `}
+	</style>
 	<div className="limiter">
 		<div className="container-login100">
 			<div className="wrap-login100">
@@ -169,7 +178,7 @@ export default function Login() {
     msUserSelect: 'none', userSelect: 'none'}}>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<span style={{marginLeft: '30px'}}>
+					<span className="noAccReg">
                     <a style={{pointerEvents: 'none'}} 
 					className = "authRef" 
 					style = {{color: '#D1B23E'}}>Don't have an account?</a> <a href = "/register" className = "authRef" style = {{color: 'white'}}>Register</a>

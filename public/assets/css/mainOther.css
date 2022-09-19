@@ -249,9 +249,9 @@ ul li {
 	height: 44px;
 	overflow: hidden;
 	position: fixed;
-	right: 5%;
+	right: 10%;
 	text-indent: 100%;
-	top: 18px;
+	top: 24px;
 	white-space: nowrap;
 	color: #D1B23E;
 	width: 44px;
@@ -895,6 +895,7 @@ ul.list-default li {
 @media only screen and (max-width: 780px) {
 .banner{
 		min-height:450px;
+	    width: 360px;
 }
 }
 @media only screen and (max-width: 580px) {

@@ -38,7 +38,7 @@ export default function Register() {
         setTimeout(function(){
         toast.show({title: "Redirecting to homepage", 
         position: 'topright', type: 'warn'});
-            history.push("/");;
+            history.push("/");
             window.location.reload(1);
          }, 5000);
     } catch (err) {
@@ -64,7 +64,16 @@ export default function Register() {
 	<link rel="stylesheet" type="text/css" href="../assetsLogin/css/main.css"/>
             </head>
         <body style={{backgroundColor: '#666666'}}>
-
+    <style>
+		{
+                  `\
+                  @media screen and (max-width: 740px){\
+                  	.haveAnAcc {\
+                  		margin-left: -71px;\
+                  	}\
+                  }\
+                  `}
+	</style>
 	<div className="limiter">
 		<div className="container-login100">
 			<div className="wrap-login100">
@@ -120,7 +129,7 @@ export default function Register() {
     WebkitUserSelect: 'none', KhtmlUserSelect: 'none', MozUserSelect: 'none',
     msUserSelect: 'none', userSelect: 'none'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span style={{marginLeft: '30px'}}>
+                    <span className="haveAnAcc">
                     <a style={{pointerEvents: 'none'}} 
 					className = "authRef" 
 					style = {{color: '#D1B23E'}}>Have an account already?</a> <a href = "/login" className = "authRef" style = {{color: 'white'}}>Login</a>

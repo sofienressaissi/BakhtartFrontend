@@ -28,6 +28,12 @@ h3 {
 	color: #2d3033;
 	font-weight: 300;
 }
+.noAccReg {
+	margin-left: 30px;
+}
+.haveAnAcc {
+	margin-left: 30px;
+}
 h4 {
 	font-size: 22px;
 	color: #2d3033;
@@ -239,9 +245,9 @@ ul li {
 	height: 44px;
 	overflow: hidden;
 	position: fixed;
-	right: 8%;
+	right: 11%;
 	text-indent: 100%;
-	top: 38px;
+	top: 35px;
 	white-space: nowrap;
 	color: #D1B23E;
 	width: 44px;
@@ -900,5 +906,6 @@ ul.list-default li {
 @media only screen and (max-width: 580px) {
 .banner{
 		min-height: 350px;
+	    width: 100%;
 }
 }

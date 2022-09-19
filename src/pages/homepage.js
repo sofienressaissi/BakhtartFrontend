@@ -250,7 +250,7 @@ export default function Homepage() {
     #map-overlay {\
         height: 400px;\
         margin-top: 0px;\
-        width: 377px;\
+        width: 392px;\
         margin-left: -17px;\
         background-color: #070C29;\
         color: #D1B23E;\
@@ -266,7 +266,7 @@ export default function Homepage() {
         display: none;\
     }\
     #header {\
-        height: 13%;\
+        height: 14%;\
         background: rgb(2, 17, 68, 0.5);\
     }\
     .navigation span .account {\
@@ -421,8 +421,6 @@ export default function Homepage() {
       #header {\
         background-color: #020d31;\
         position: fixed;\
-        width: 100%;\
-        height: 15%;\
         z-index: 999;\
       }\
       `}
@@ -430,8 +428,6 @@ export default function Homepage() {
         {`\
       #header {\
         position: fixed;\
-        width: 100%;\
-        height: 15%;\
         z-index: 999;\
         background: rgb(2, 17, 68, 0.5);\
       }\

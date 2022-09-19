@@ -1389,6 +1389,9 @@ export default function ProdDetail() {
     .col-sm-6 .enabBtn {\
         margin-left: 94px;\
     }\
+    .prodDetails {\
+        margin-top: -90px;\
+    }\
     .btn .btn-danger {\
         margin-left: 94px;\
     }\
@@ -1472,11 +1475,17 @@ export default function ProdDetail() {
     }\
     #header {\
         width: 100%;\
-        height: 11%;\
+        height: 12%;\
     }\
     .logo {\
         margin-left: -15px;\
         margin-top: -1px;\
+    }\
+    .container .disBtn {\
+        margin-left: 83px;\
+    }\
+    .loginReq {\
+        margin-left: 110px;\
     }\
     .footer {\
         background: white;\
@@ -1626,7 +1635,7 @@ export default function ProdDetail() {
                                     
                             </div>
 
-                            <div className="col-sm-6">
+                            <div className="col-sm-6 prodDetails">
                                 <div className="product-inner">
                                 <h2 className="product-name" style={{fontFamily: 'Felix Titling'}}>
                                 {

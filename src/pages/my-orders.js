@@ -63,7 +63,8 @@ export default function MyOrders() {
 
       for (let i = 0; i < currentTableData.length; i++) {
         for (let j = 0; j < bakhtartProds.length; j++) {
-            if (currentTableData[i].productId === bakhtartProds[j]._id) {
+            if (currentTableData[i].productId === bakhtartProds[j]._id
+                && userrData.userr && userrData.userr.id === currentTableData[i].userId) {
                 orderByLast.push(bakhtartProds[j]);
             }
         }
