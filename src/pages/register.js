@@ -130,9 +130,11 @@ export default function Register() {
     msUserSelect: 'none', userSelect: 'none'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <span className="haveAnAcc">
-                    <a style={{pointerEvents: 'none'}} 
-					className = "authRef" 
-					style = {{color: '#D1B23E'}}>Have an account already?</a> <a href = "/login" className = "authRef" style = {{color: 'white'}}>Login</a>
+                    <a className = "authRef" 
+					style = {{color: '#D1B23E', pointerEvents: 'none'}}>
+                        Have an account already?</a> <a href = "/login" className = "authRef" style = {{color: 'white'}}>
+                            Login
+                    </a>
 					</span>
                 </form>
 

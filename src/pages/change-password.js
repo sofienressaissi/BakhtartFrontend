@@ -9,7 +9,6 @@ import { toast } from 'toast-notification-alert';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import ScrollUpButton from "react-scroll-up-button";
 import UserContext from "../context/UserContext";
-import emailjs from "emailjs-com";
 import {GiHamburgerMenu} from "react-icons/gi";
 import {MenuAccount} from "../components/MenuAccount";
 import {ReactDimmer} from "react-dimmer";

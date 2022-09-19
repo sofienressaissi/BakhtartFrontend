@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
-import emailjs from "emailjs-com";
 import { toast } from 'toast-notification-alert';
 
 export default function ForgetPassword() {
@@ -34,19 +33,6 @@ export default function ForgetPassword() {
         );
         toast.show({title: 'Sending Email!',
             position: 'topright', type: 'info'});
-            var templateParams = {
-                email: email,
-                subject: "Forget Password",
-                content: `Did you forget your password?
-                We have a generated for you a new one: ${newFPUser.newPass}
-                https://bakhtart.herokuapp.com/login`
-            };
-    emailjs.send('gmail', 'template_o16x6cr', templateParams, 'user_aA9P4JZixsituJGeWQYWC')
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
         setTimeout(function(){
             toast.show({title: 'Email Sent!',
             position: 'topright', type: 'info'});
