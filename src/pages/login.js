@@ -179,9 +179,8 @@ export default function Login() {
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 					<span className="noAccReg">
-                    <a style={{pointerEvents: 'none'}} 
-					className = "authRef" 
-					style = {{color: '#D1B23E'}}>Don't have an account?</a> <a href = "/register" className = "authRef" style = {{color: 'white'}}>Register</a>
+                    <a className = "authRef" 
+					style = {{color: '#D1B23E', pointerEvents: 'none'}}>Don't have an account?</a> <a href = "/register" className = "authRef" style = {{color: 'white'}}>Register</a>
 					</span>
 				</form>
 
