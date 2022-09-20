@@ -130,7 +130,7 @@ export default function EditProfile() {
         </head>
         <body className="onlyinfos">
         <a href = "/">
-            <img className="logo" src={`https://bakhtart.herokuapp.com/assets/images/logoBakhtSiren.png`}/>
+            <img className="logo" src="../assets/images/logoBakhtSiren.png" alt = "BakhtArt Logo"/>
         </a>
         <nav className="navigation" role="navigation">
            
@@ -707,7 +707,7 @@ src="https://maps.google.com/maps?q=Rue%20de%20la%20tendresse,%20Marsa&t=&z=13&i
           <br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/>
           <span style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>BAKHT</span>
-          <img src={`https://bakhtart.herokuapp.com/assets/images/logoBakhtSiren.png`} alt="BakhtArt Logo"/>
+          <img src="../assets/images/logoBakhtSiren.png" alt = "BakhtArt Logo"/>
           <span style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>ART</span><br/>
           <h2 style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>Something went wrong!</h2><br/>
         </div>
