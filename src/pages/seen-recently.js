@@ -14,8 +14,6 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import {MenuAccount} from "../components/MenuAccount";
 import {ReactDimmer} from "react-dimmer";
 
-let PageSize = 4;
-
 export default function SeenRecently() {
 
     const [firstName, setFirstName] = useState();
@@ -40,6 +38,7 @@ export default function SeenRecently() {
     const [searchitem, setSearchitem] = useState('');
     let seenByDate = [];
     let [nbSeen] = useState(0);
+    let PageSize = seenProds.length;
 
     useEffect(async() => {
         const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');

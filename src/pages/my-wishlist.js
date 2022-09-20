@@ -14,8 +14,6 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import {MenuAccount} from "../components/MenuAccount";
 import {ReactDimmer} from "react-dimmer";
 
-let PageSize = 4;
-
 export default function MyWishlist() {
 
     const [firstName, setFirstName] = useState();
@@ -40,6 +38,7 @@ export default function MyWishlist() {
     let wishByLast = [];
     const [searchitem, setSearchitem] = useState('');
     let [nbWish] = useState(0);
+    let PageSize = wishProds.length;
 
     useEffect(async() => {
         const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
