@@ -192,21 +192,37 @@ export default function Homepage() {
         <style>
         {
                   `\
+                  .container h4 {\
+                    color: #070C29;\
+                    font-family: Felix Titling;\
+                    font-weight: bold;\
+                    font-size: 22px;\
+                  }
+                  .container h1 {\
+                    color: #070C29;\
+                    font-family: Felix Titling;\
+                  }\
                   @media screen and (max-width: 740px){\
     .container h4 {\
-        text-align: left;\
-        font-size: 20px;\
-        background-color: white;\
+        text-align: center;\
+        font-size: 17px;\
+        background-color: #070C29;\
         border-radius: 5px;\
+        color: #D1B23E;\
+        font-weight: bold;\
+        line-height: 40px;\
     }\
     .container h1 {\
-        text-align: left;\
+        text-align: center;\
         font-size: 20px;\
-        background-color: white;\
+        background-color: #070C29;\
         border-radius: 5px;\
+        color: #D1B23E;\
+        visibility: hidden;\
     }\
     .container button {\
-        margin-left: 0px;\
+        margin-left: 66px;\
+        line-height: 39px;\
     }\
     #section-profile p {\
         margin-left: -75px;\
@@ -500,9 +516,9 @@ export default function Homepage() {
   <div className="container">
     <div className="col-md-6 col-sm-12">
       <div className="banner-text text-center">
-      <h4 style={{color: '#070C29', fontFamily: 'Felix Titling', fontWeight: 'bold'}}>Luxury must be comfortable <br/>otherwise
+      <h4>Luxury must be comfortable <br/>otherwise
         it is not luxury.</h4>
-        <h1 style={{color: '#070C29', fontFamily: 'Felix Titling'}}><span style = {{color: '#070C29'}}>Whims of Princesses</span> <span className="icon icon-heart" style = {{color: '#070C29'}}></span></h1>
+        <h1>Whims of Princesses <span className="icon icon-heart" style = {{color: '#070C29'}}></span></h1>
 
         {
             !userrData.userr ?
@@ -660,7 +676,7 @@ src="https://maps.google.com/maps?q=Rue%20de%20la%20tendresse,%20Marsa&t=&z=13&i
     			<abbr title="Phone">Phone Number:</abbr> +216 98 353 353<br/><br/>
           <FaGlobe/> International Delivery &nbsp;&nbsp;<FaHeadset/>&nbsp;Customer Support &nbsp;&nbsp;<FaTruckMoving/>&nbsp;Home Delivery
     		</address>
-			  © Copyright 2016 - 2021 bakhtart.herokuapp.com | Made with <img src="../assets/images/heartbeat.gif" style={{width: '20px'}}/> by <strong>Sofien Ressaissi</strong>.
+			  © Copyright 2016 - 2021 bakht-art.com | Made with <img src="../assets/images/heartbeat.gif" style={{width: '20px'}}/> by <strong>Sofien Ressaissi</strong>.
     	</div>
       <ScrollUpButton style={{width: 75}} ToggledStyle={{right: 100}}
               StopPosition={0}

@@ -1762,7 +1762,7 @@ export default function ProdDetail() {
                     fontFamily: 'Felix Titling'}}>Shipping Cost: 7 TND</h5><br/>
                         <h5 style={{color: '#021144',
                     fontFamily: 'Felix Titling'}}><FaShare/> Share This Article</h5>
-                        <ShareSocial url = {`https://bakhtart.herokuapp.com/products/${itemc.categoryPath}/${productId}`}
+                        <ShareSocial url = {`https://bakht-art.com/products/${itemc.categoryPath}/${productId}`}
                         socialTypes={['facebook','twitter']}
                         style={socialMediaStyle}
                         />
@@ -2010,7 +2010,7 @@ src="https://maps.google.com/maps?q=Rue%20de%20la%20tendresse,%20Marsa&t=&z=13&i
     			<abbr title="Phone">Phone Number:</abbr> +216 98 353 353<br/><br/>
           <FaGlobe/> International Delivery &nbsp;&nbsp;<FaHeadset/>&nbsp;Customer Support &nbsp;&nbsp;<FaTruckMoving/>&nbsp;Home Delivery
     		</address>
-			  © Copyright 2016 - 2021 bakhtart.herokuapp.com | Made with <img src="../../../assets/images/heartbeat.gif" style={{width: '20px'}}/> by <strong>Sofien Ressaissi</strong>.
+			  © Copyright 2016 - 2021 bakht-art.com | Made with <img src="../../../assets/images/heartbeat.gif" style={{width: '20px'}}/> by <strong>Sofien Ressaissi</strong>.
     	</div>
       <ScrollUpButton style={{width: 75}} ToggledStyle={{right: 100}}
               StopPosition={0}
