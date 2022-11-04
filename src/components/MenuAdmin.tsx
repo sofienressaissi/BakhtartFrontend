@@ -7,6 +7,7 @@ import {
     FaInfo,
     FaList,
     FaPhone, FaPlusSquare,
+    FaShoppingBag,
     FaSignInAlt, FaTrash, FaTshirt,
     FaUser,
     FaUserEdit, FaUserInjured, FaUserLock, FaUserPlus, FaUsers
@@ -44,6 +45,7 @@ export const MenuAdmin = ({ isMenuOpen }: IMenuProps) => {
 
   display: flex;\
   justify-content: center;\
+  line-height: 36px;\
         }\
         .menu-open {\
   transform: translateX(0%);\
@@ -144,6 +146,12 @@ li a {\
         style={{color: '#D1B23E', fontFamily: 'Felix Titling', fontWeight: 'bold', fontSize: '30px'}}
     >
                 <FaFolderPlus style={{fontSize: '15px'}}/> <span style={{fontSize: '10px'}}>Add New Category</span>
+    </a></li>
+    <li>
+          <a href = "/admin/all-orders"
+        style={{color: '#D1B23E', fontFamily: 'Felix Titling', fontWeight: 'bold', fontSize: '30px'}}
+    >
+                <FaShoppingBag style={{fontSize: '15px'}}/> <span style={{fontSize: '10px'}}>All Orders</span>
     </a></li>
         </ul>
     </div></>

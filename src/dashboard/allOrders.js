@@ -1,26 +1,41 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import Favicon from 'react-favicon';
 import { useHistory } from 'react-router-dom';
 import Axios from "axios";
 import { FaDoorOpen, FaStar, FaUsers, FaUserEdit, FaTrash, 
     FaUserLock, FaUserInjured, FaUserPlus, FaBoxes, FaTshirt,
     FaPlusSquare, FaFolderPlus, FaCheckSquare, FaShoppingBag } from 'react-icons/fa';
-import UserContext from "../context/UserContext";
+import { GetColorName } from 'hex-color-to-color-name';
 import { toast } from 'toast-notification-alert';
+import UserContext from "../context/UserContext";
+import Pagination from '../pagination/pagination';
 import {GiHamburgerMenu} from "react-icons/gi";
 import {MenuAdmin} from "../components/MenuAdmin";
 import {ReactDimmer} from "react-dimmer";
+import Moment from 'react-moment';
 
-export default function AddCategory() {
+let PageSize = 3;
+
+export default function AllOrders() {
+
+    const [currentPage, setCurrentPage] = useState(1);
 
     const { userrData, setUserrData } = useContext(UserContext);
 
-    const [file, setFile] = useState();
-    const [categoryName, setCategoryName] = useState();
-    const [categoryImg, setCategoryImg] = useState();
-    const [message, setMessage] = useState("");
-    const [imageCatName, setImageCatName] = useState("");
-    const [url, setUrl]=useState('');
+    let [bakhtartProds, setBakhtartProds] = useState([]);
+
+    const [orders, setOrders] = useState([]);
+
+    let orderByLast = [];
+
+    const [isMenuOpen, setMenu] = useState(false);
+
+    const handleMenu = () => {
+        setMenu((prevState) => !prevState);
+    };
+
+    let [searchItem, setSearchItem] = useState('');
+
     let [allMsgs, setAllMsgs] = useState([]);
     let [nbUM] = useState(0);
 
@@ -31,11 +46,30 @@ export default function AddCategory() {
       allMsgs.map((itemu,index)=>{
         itemu.status === false ? nbUM = nbUM + 1 : <></>
       });
-      const [isMenuOpen, setMenu] = useState(false);
 
-    const handleMenu = () => {
-        setMenu((prevState) => !prevState);
-    };
+      useEffect(async() => {
+        const result_bakhtords = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-orders');
+        setOrders(result_bakhtords.data);
+      },[]);
+
+    useEffect(async() => {
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin/');
+        setBakhtartProds(result_bakhtprods.data);
+      },[]);
+
+      const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return orders.slice(firstPageIndex, lastPageIndex);
+      }, [currentPage, orders]);
+
+      for (let i = 0; i < currentTableData.length; i++) {
+        for (let j = 0; j < bakhtartProds.length; j++) {
+            if (currentTableData[i].productId === bakhtartProds[j]._id) {
+                orderByLast.push(bakhtartProds[j]);
+            }
+        }
+    }
 
     const history = useHistory();
 
@@ -48,47 +82,21 @@ export default function AddCategory() {
         history.push('/login');
         window.location.reload();
     }
-    const uploadImage = async() => {
-        const data = new FormData();
-        data.append("file", file);
-        data.append("upload_preset", "h2uuuh2d");
-        data.append("cloud_name", "dl0o9l8xz");
-        fetch("https://api.cloudinary.com/v1_1/dl0o9l8xz/image/upload",{
-            method: 'post',
-            body: data
-        }).then(resp => resp.json())
-        .then(data => {
-            setUrl(data.url);
-            setImageCatName(file.name);
-            setMessage("Image Uploaded Successfully!");
-            toast.show({title: "Image Uploaded Successfully!",
-            position: 'topright', type: 'info'});
-        })
-    }
-    const addCategory = async (event) => {
-        event.preventDefault();
+
+    const deleteOrder = async (orderId) => {
         try {
-            const catToAddAdmin = {
-                categoryName: categoryName,
-                categoryImg: url,
-                imageCatName: imageCatName
-            };
-              await Axios.post(`https://bakhtart-backend.herokuapp.com/adminbakht/add-category`,
-              catToAddAdmin);
-              toast.show({title: 'Category Added Successfully!',
-            position: 'topright', type: 'info'});
-              setCategoryName("");
-              setCategoryImg("");
-              setFile(null);
-              setTimeout(function(){
+            await Axios.delete(
+                "https://bakhtart-backend.herokuapp.com/fashion/delete-order-by-id/"+orderId
+            );
+            toast.show({title: 'Order Deleted!',
+            position: 'topright', type: 'alert'});
+            setTimeout(function(){
                 window.location.reload(1);
              }, 2000);
-            
-            
         } catch (err) {
-            toast.show({title: err.response.data.msg, position: 'topright', type: 'alert'});
+            toast.show({title: "Error deleting order", position: 'topright', type: 'alert'});
         }
-      };
+    }
 
     return(
         <>
@@ -98,7 +106,7 @@ export default function AddCategory() {
                 <html>
 
 <head>
-    <title>BakhtArt - Add New Category</title>
+    <title>BakhtArt - All Orders</title>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <meta charSet="utf-8"/>
@@ -167,7 +175,7 @@ export default function AddCategory() {
                           <li className="user-profile header-notification">
                               <a className="waves-effect waves-light">
                                   {
-                                      userrData.userr.imageProfile=== 'unknownAvatar.jpg' ?
+                                      userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
                                         <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
@@ -336,7 +344,7 @@ export default function AddCategory() {
                               <li>
                                   <a href="/admin/add-category" className="waves-effect waves-dark">
                                   <span className="pcoded-micon"><FaFolderPlus style={{color: '#021144'}}/></span>
-                                      <span className="pcoded-mtext"  data-i18n="nav.basic-components.main"><b>Add New Category</b></span>
+                                      <span className="pcoded-mtext"  data-i18n="nav.basic-components.main">Add New Category</span>
                                       <span className="pcoded-mcaret"></span>
                                   </a>
                               </li>
@@ -348,7 +356,7 @@ export default function AddCategory() {
                           <li>
                                   <a href="/admin/all-orders" className="waves-effect waves-dark">
                                   <span className="pcoded-micon"><FaShoppingBag style={{color: '#021144'}}/></span>
-                                      <span className="pcoded-mtext"  data-i18n="nav.basic-components.main">All Orders</span>
+                                      <span className="pcoded-mtext"  data-i18n="nav.basic-components.main"><b>All Orders</b></span>
                                       <span className="pcoded-mcaret"></span>
                                   </a>
                               </li>
@@ -362,7 +370,7 @@ export default function AddCategory() {
                                   <div className="col-md-8">
                                       <div className="page-header-title">
                                           <h5 className="m-b-10">Admin Dashboard</h5>
-                                          <p className="m-b-0">Add New Category</p>
+                                          <p className="m-b-0">All Orders</p>
                                       </div>
                                   </div>
                                   <div className="col-md-4">
@@ -372,7 +380,7 @@ export default function AddCategory() {
                                           </li>
                                           <li className="breadcrumb-item"><a href="/admin">Admin Dashboard</a>
                                           </li>
-                                          <li className="breadcrumb-item"><a>Add New Category</a>
+                                          <li className="breadcrumb-item"><a>All Orders</a>
                                           </li>
                                       </ul>
                                   </div>
@@ -381,19 +389,29 @@ export default function AddCategory() {
                           </div>
                       </div>
                     </div>
+                    <style>
+                    {`\
+        .searchItem {\
+          border-radius: 10px;\
+          height: 30px;\
+          width: 300px;\
+          margin-right: 36px;\
+        }\
+      `}
+                    </style>
                   <style>
                       {
                           `\
                            @media screen and (max-width: 740px){\
-                                .main-menu, .usernameH, .usernameD, .genderH, .genderD, .accountCH, .accountCD, .imageH, .imageD {\
+                                .main-menu, .addedByH, .addedByD, .genderH, .genderD, .accountCH, .accountCD, .imageH, .imageD {\
                                     display: none;\
                                 }\
                                 table {\
-                                    margin-left: -12px;\
+                                    margin-left: 9px;\
                                 }\
                                 .table-responsive {\
-                                    font-size: 6px;\
-                                    margin-left: -12px;\
+                                    font-size: 5.7px;\
+                                    margin-left: -10px;\
                                     overflow: hidden;\
                                 }\
                                 .dashboardBody {\
@@ -410,7 +428,7 @@ export default function AddCategory() {
                                     display: none;\
                                 }\
                                 .navbar-logo img {\
-                                    margin-top: -37px;\
+                                    margin-top: -38px;\
                                 }\
                                 .hambMenu {\
                                     margin-top: -39px;\
@@ -418,19 +436,9 @@ export default function AddCategory() {
                                 .navbar-logo {\
                                     margin-left: -150px;\
                                 }\
-                                .btn-success {\
-                                    margin-left: 15px;\
-                                    margin-top: 15px;\
-                                }\
                                 td button {\
                                     margin-left: -10px;\
                                     height: 20px;\
-                                }\
-                                .col-form-label {\
-                                    font-size: 9px;\
-                                }\
-                                input[type=file] {\
-                                    color:transparent;\
                                 }\
                                 .dashboardBody {\
                                     position: fixed;\
@@ -462,59 +470,99 @@ z-index: 99999;\
 transition: all 0.3s;\
 }
                             }\
+                            .card .card-block {\
+                                padding: 20px;\
+                                height: 600px;\
+                            }\
                           `}
                   </style>
                     <div className="card">
-                         <div className="card-header">
-                             <h5>Add New Category</h5>
-                         </div>
-                         <div className="card-block">
-                         <form onSubmit = {addCategory}>
-                         
-                    
-                                                            <div className="form-group row">
-                                                                <div className="col-sm-10">
-                                                                    <input type="text" 
-                                                                    className="form-control"
-                                                                    placeholder="Category Name"
-                                                                    value={categoryName}
-                                                                    onChange={(e) => setCategoryName(e.target.value)}
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                                     <div className="form-group row">
-                                                                            <label className="col-sm-2 col-form-label">Category Image</label>
-                                                                            <div className="col-sm-10">
-                                                                                <input type="file"
-                                                                                value={categoryImg}
-                                                                                onChange={(e) => setFile(e.target.files[0])}/>
-                                                                            </div>
-                                                                            {
-                                                                                file && message === "" ?
+                                            <div className="card-header">
+                                                <h5>All Orders</h5>
+                                            </div>
+                                            <div align = "right">
+                                            <input type="text"
+                        placeholder="Search Order" className="searchItem"
+                   onChange={(e)=>setSearchItem(e.target.value)}/></div>
+                                            <div className="card-block table-border-style">
+                                                <div className="table-responsive">
+                                                    <table className="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Order N°</th>
+                                                                <th>Order Date</th>
+                                                                <th>Product</th>
+                                                                <th>State</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {
+                                                                currentTableData.filter((item=>{
+                                                                    if (searchItem === "") {
+                                                                        return item
+                                                                    }else if(item.orderNumber.toLowerCase().includes(searchItem.toLowerCase())
+                                                                            ||item.stateOrd.toLowerCase().includes(searchItem.toLowerCase())){
+                                                                        return item
+                                                                    }
+                                                                })).reverse().map(itemp => {
+                                                                    return(
+                                                                    <tr key={itemp._id}>
+                                                                    <td>
+                                                                    #{itemp.orderNumber}
+                                                                    </td>
+                                                                    <td><Moment format = "MMMM DD YYYY">
+                                                                
+                                                                {itemp.dateOrd}
+                                                                
+                                                                </Moment>
+                                                                    </td>
+                                                                    <td>
+                                                                        {
+                                                                            bakhtartProds.map(itemprod => {
+                                                                                return(
+                                                                                    itemprod._id === itemp.productId ?
                                                                                 <>
-                                                                                <button type="button"
-                                                                                className = "btn btn-success"
-                                                                                onClick = {uploadImage}>
-                                                                                    Upload
-                                                                                </button>
+                                                                                <a href={`${itemprod.productImage}`} target = "_blank">
+                                                             <img width="40px" 
+                                                                     height="40px" alt="if the image is not loaded, this is Firebase issues!"
+                                                                      src={`${itemprod.productImage}`}/>
+                                                                 </a><br/>
+                                                                 <span>
+                                                                     {itemprod.productName}<br/>
+                                                                        Size: {itemprod.productSize.toUpperCase()}<br/>
+                                                                        Price: {itemprod.productPrice} TND<br/>
+                                                                        Color: {GetColorName(itemprod.productColor)}<br/>
+                                                                 </span>
                                                                                 </> : <></>
-                                                                            }
-                                                                        </div>
-                                                           
-                                                                        <div className = "form-group row">
-                                 
-                    
-                                                                        </div>
-                                                                        <div className="form-group row">
-                                                                <div className="col-sm-10">
-                                                                    <input type="submit" 
-                                                                    value = "Add Category"
-                                                                    className="btn btn-primary"/>
-                                                                </div>
-                                                            </div>
-                                                                    </form>
-                         </div>
-                    </div>
+                                                                                )
+                                                                                
+                                                                            })
+                                                                        }
+                                                                    </td>
+                                                                    <td><span>{itemp.stateOrd}</span></td>
+                                                                    <td>
+                                                                    <button type="button" style={{background: 'red', 
+                                                                    border: 'none', color: 'white', fontWeight: 'bold',
+                                                                    cursor: 'pointer'}}
+                                                                    onClick={() => deleteOrder(itemp._id)}>
+                                                                          Delete Order 
+                                                                     </button>
+                                                                    </td>
+                                                                    </tr>)
+                                                                    })}
+                                                        </tbody>
+                                                    </table>
+                                                    <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={bakhtartProds.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
+                                                </div>
+                                            </div>
+                                        </div>
                 </div>
             </div>
             <footer align = "center" style={{marginBottom: '-500px;'}}>

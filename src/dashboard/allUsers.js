@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import Axios from "axios";
 import { FaDoorOpen, FaStar, FaUsers, FaUserEdit, FaTrash, 
     FaUserLock, FaUserInjured, FaUserPlus, FaBoxes, FaTshirt,
-    FaPlusSquare, FaFolderPlus, FaCheckSquare } from 'react-icons/fa';
+    FaPlusSquare, FaFolderPlus, FaCheckSquare, FaShoppingBag } from 'react-icons/fa';
 import { toast } from 'toast-notification-alert';
 import emailjs from "emailjs-com";
 import UserContext from "../context/UserContext";
@@ -354,9 +354,19 @@ export default function AllUsers() {
                                       <span className="pcoded-mcaret"></span>
                                   </a>
                               </li>
-        
                           </ul>
-                          
+                          <div className="pcoded-navigation-label" data-i18n="nav.category.forms">
+                              Orders Management
+                          </div>
+                          <ul className="pcoded-item pcoded-left-item">
+                          <li>
+                                  <a href="/admin/all-orders" className="waves-effect waves-dark">
+                                  <span className="pcoded-micon"><FaShoppingBag style={{color: '#021144'}}/></span>
+                                      <span className="pcoded-mtext"  data-i18n="nav.basic-components.main">All Orders</span>
+                                      <span className="pcoded-mcaret"></span>
+                                  </a>
+                              </li>
+                          </ul>
                       </div>
                   </nav>
                   <div className="pcoded-content">

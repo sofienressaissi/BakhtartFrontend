@@ -24,6 +24,7 @@ const ResetPasswordView = lazy(()=> import("./pages/change-password"));
 const DashboardAdminBakht = lazy(()=> import("./dashboard/dashboardHome"));
 const AllUsersBakht = lazy(()=> import("./dashboard/allUsers"));
 const AllProdsBakht = lazy(()=> import("./dashboard/allProducts"));
+const AllOrdersBakht = lazy(()=> import("./dashboard/allOrders"));
 const AllCatsBakht = lazy(()=> import("./dashboard/allCategories"));
 const CurrentProdsBakht = lazy(()=> import("./dashboard/currentProducts"));
 const OutOfStockProdsBakht = lazy(()=> import("./dashboard/outOfStockProducts"));
@@ -102,6 +103,7 @@ function App() {
     <Route exact path="/admin/edit-account" component={EditAccountBakht} />
     <Route exact path="/admin/all-users" component={AllUsersBakht} />
     <Route exact path="/admin/all-products" component={AllProdsBakht} />
+    <Route exact path="/admin/all-orders" component={AllOrdersBakht} />
     <Route exact path="/admin/all-categories" component={AllCatsBakht} />
     <Route exact path="/admin/current-products" component={CurrentProdsBakht} />
     <Route exact path="/admin/out-of-stock-products" component={OutOfStockProdsBakht} />

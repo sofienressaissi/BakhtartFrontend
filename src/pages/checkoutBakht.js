@@ -140,8 +140,7 @@ export default function CheckoutBakht() {
             }
             
         } catch (err) {
-            //toast.show({title: err.response.data.msg, position: 'topright', type: 'alert'});
-            console.log(err);
+            toast.show({title: "Error placing Order!", position: 'topright', type: 'alert'});
         }
         
     }
