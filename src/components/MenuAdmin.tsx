@@ -1,18 +1,10 @@
 import * as React from "react";
 import {
-    FaBox, FaBoxes, FaCheckSquare,
-    FaDoorClosed,
+    FaBoxes, FaCheckSquare,
     FaDoorOpen, FaEnvelope, FaFolderPlus,
-    FaHome,
-    FaInfo,
-    FaList,
-    FaPhone, FaPlusSquare,
-    FaShoppingBag,
-    FaSignInAlt, FaTrash, FaTshirt,
-    FaUser,
-    FaUserEdit, FaUserInjured, FaUserLock, FaUserPlus, FaUsers
+    FaPlusSquare, FaShoppingBag,
+    FaTrash, FaTshirt, FaUserEdit, FaUserInjured, FaUserLock, FaUserPlus, FaUsers
 } from "react-icons/fa";
-import { toast } from 'toast-notification-alert';
 
 interface IMenuProps {
   isMenuOpen: boolean;
