@@ -56,11 +56,11 @@ function App() {
         token = "";
     }
     const tokenRes = await Axios.post(
-        "https://bakhtart-backend.herokuapp.com/fashion/tokenIsValid", 
+        "https://bakhtart-backend.onrender.com/fashion/tokenIsValid", 
         null, {headers: {"x-auth-token": token}}
     );
     if (tokenRes.data) {
-        const userrRes = await Axios.get("https://bakhtart-backend.herokuapp.com/fashion/",
+        const userrRes = await Axios.get("https://bakhtart-backend.onrender.com/fashion/",
             {headers: {"x-auth-token": token},
         });
         setUserrData({
@@ -126,7 +126,7 @@ function App() {
           <br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/>
           <span style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>BAKHT</span>
-          <img src={`https://bakhtart.herokuapp.com/assets/images/logoBakhtSiren.png`} alt="BakhtArt Logo"/>
+          <img src={`https://bakhtart.onrender.com/assets/images/logoBakhtSiren.png`} alt="BakhtArt Logo"/>
           <span style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>ART</span><br/>
           <h2 style={{color: '#D3BE06', fontFamily: 'Felix Titling'}}>404 Not Found!</h2><br/>
         </div>

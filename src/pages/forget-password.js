@@ -28,7 +28,7 @@ export default function ForgetPassword() {
                 newPass: makeid(8)
             };
         await Axios.put(
-            "https://bakhtart-backend.herokuapp.com/fashion/forget-password",
+            "https://bakhtart-backend.onrender.com/fashion/forget-password",
             newFPUser
         );
         toast.show({title: 'Sending Email!',

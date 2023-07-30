@@ -41,17 +41,17 @@ export default function MyWishlist() {
     let PageSize = wishProds.length;
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtCats(result_bakhtcats.data);
       },[]);
 
     useEffect(async() => {
-        const result_wishprods = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-wish-prods');
+        const result_wishprods = await Axios.get('https://bakhtart-backend.onrender.com/fashion/all-wish-prods');
         setWishProds(result_wishprods.data);
       },[]);
 
       useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
@@ -97,7 +97,7 @@ export default function MyWishlist() {
     const deleteProdWish = async (productId) => {
         try {
             await Axios.delete(
-                "https://bakhtart-backend.herokuapp.com/fashion/delete-prod-wish/"+productId+"/"+userrData.userr.id
+                "https://bakhtart-backend.onrender.com/fashion/delete-prod-wish/"+productId+"/"+userrData.userr.id
             );
             toast.show({title: 'Product Removed From Wishlist!',
             position: 'topright', type: 'alert'});
@@ -119,7 +119,7 @@ export default function MyWishlist() {
                 content
             };
             await Axios.post(
-                "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+                "https://bakhtart-backend.onrender.com/fashion/send-message",
                 newMsg
             );
             toast.show({title: "Message sent successfully!", 
@@ -321,7 +321,7 @@ table {\
                         <div className="profile-img">
                         {
                             userrData.userr && userrData.userr.imageProfile === "unknownAvatar.jpg" ?
-                                <img src={`https://bakhtart-backend.herokuapp.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
+                                <img src={`https://bakhtart-backend.onrender.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
                                      alt="" style={{width: '250px', height: '150px'}}/> :
                                 <></>
                         }

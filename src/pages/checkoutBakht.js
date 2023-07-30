@@ -58,7 +58,7 @@ export default function CheckoutBakht() {
                 userId: userId
             };
             await Axios.delete(
-                "https://bakhtart-backend.herokuapp.com/fashion/delete-prod-from-cart/"+productId+"/"+userId,
+                "https://bakhtart-backend.onrender.com/fashion/delete-prod-from-cart/"+productId+"/"+userId,
                 prodToCart
             );
             toast.show({title: 'Deleted From Cart!',
@@ -74,13 +74,13 @@ export default function CheckoutBakht() {
     }
 
     useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
       useEffect(async() => {
         const result_pc = 
-        await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/countprodcart');
+        await Axios.get('https://bakhtart-backend.onrender.com/fashion/countprodcart');
         setProdCarts(result_pc.data);
       },[]);
 
@@ -97,7 +97,7 @@ export default function CheckoutBakht() {
         )))
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtartCats(result_bakhtcats.data);
       },[]);
 
@@ -121,11 +121,11 @@ export default function CheckoutBakht() {
                                 productId: prodCarts[i].productId
                             }
                             await Axios.post(
-                                "https://bakhtart-backend.herokuapp.com/fashion/place-order/"+prodCarts[i].productId+"/"+userrData.userr.id,
+                                "https://bakhtart-backend.onrender.com/fashion/place-order/"+prodCarts[i].productId+"/"+userrData.userr.id,
                                 prodsToCheckout
                             );
                             await Axios.delete(
-                                "https://bakhtart-backend.herokuapp.com/fashion/delete-prod-from-cart/"+prodCarts[i].productId+"/"+userrData.userr.id,
+                                "https://bakhtart-backend.onrender.com/fashion/delete-prod-from-cart/"+prodCarts[i].productId+"/"+userrData.userr.id,
                                 prodsToDelete
                             );
                             
@@ -174,7 +174,7 @@ export default function CheckoutBakht() {
               content
           };
           await Axios.post(
-              "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+              "https://bakhtart-backend.onrender.com/fashion/send-message",
               newMsg
           );
           toast.show({title: "Message sent successfully!", 

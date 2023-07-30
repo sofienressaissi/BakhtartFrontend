@@ -26,7 +26,7 @@ export default function AddNewUser() {
     let [nbUM] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtusers = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allMsgs');
+        const result_bakhtusers = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allMsgs');
         setAllMsgs(result_bakhtusers.data);
       },[]);
       allMsgs.map((itemu,index)=>{
@@ -60,7 +60,7 @@ export default function AddNewUser() {
                 email: email,
                 phoneNumber: phoneNumber
             };
-              await Axios.post(`https://bakhtart-backend.herokuapp.com/adminbakht/add-new-user`,
+              await Axios.post(`https://bakhtart-backend.onrender.com/adminbakht/add-new-user`,
               userToAddByAdmin);
               toast.show({title: 'User added successfully! Sending Email!',
             position: 'topright', type: 'info'});
@@ -173,7 +173,7 @@ export default function AddNewUser() {
                                   {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="Profile Img"/>
                                       </> : <></>
@@ -223,7 +223,7 @@ export default function AddNewUser() {
                               {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-80 img-radius" 
                                   alt="Profile Img"/>
                                       </> : <></>

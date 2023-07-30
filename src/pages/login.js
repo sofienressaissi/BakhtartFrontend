@@ -55,7 +55,7 @@ export default function Login() {
         };
 			
       			  const loginRes = await Axios.post(
-      		      "https://bakhtart-backend.herokuapp.com/fashion/login",
+      		      "https://bakhtart-backend.onrender.com/fashion/login",
       		      loginUser
     		    );
    			     setUserrData({

@@ -42,7 +42,7 @@ export default function AllUsers() {
     let [nbUM] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtusers = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allMsgs');
+        const result_bakhtusers = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allMsgs');
         setAllMsgs(result_bakhtusers.data);
       },[]);
       allMsgs.map((itemu,index)=>{
@@ -50,7 +50,7 @@ export default function AllUsers() {
       });
 
     useEffect(async() => {
-        const result_bakhtusers = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtUsers/');
+        const result_bakhtusers = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtUsers/');
         setBakhtartUsers(result_bakhtusers.data);
       },[]);
 
@@ -75,7 +75,7 @@ export default function AllUsers() {
     const deleteUser = async (userId, email) => {
         try {
                 await Axios.delete(
-                    `https://bakhtart-backend.herokuapp.com/adminbakht/delete-user-account/${userId}`
+                    `https://bakhtart-backend.onrender.com/adminbakht/delete-user-account/${userId}`
                 );
                 setDisDelBtn(true);
                 setCursor("default");
@@ -183,7 +183,7 @@ export default function AllUsers() {
                                   {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>
@@ -233,7 +233,7 @@ export default function AllUsers() {
                               {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-80 img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>
@@ -519,7 +519,7 @@ transition: all 0.3s;\
                                                                     {
                                       itemb.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="User-Profile-Image" width="40px" height="40px" style={{marginTop: '-4px'}}/>
                                       </> : <>

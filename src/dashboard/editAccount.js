@@ -34,7 +34,7 @@ export default function EditAccount() {
     let [nbUM] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtusers = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allMsgs');
+        const result_bakhtusers = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allMsgs');
         setAllMsgs(result_bakhtusers.data);
       },[]);
       allMsgs.map((itemu,index)=>{
@@ -63,7 +63,7 @@ export default function EditAccount() {
             };
 
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/adminbakht/update-password/${userrData.userr.id}`,
+                `https://bakhtart-backend.onrender.com/adminbakht/update-password/${userrData.userr.id}`,
                 adminEditPass
             );
             toast.show({title: 'Password Updated!',
@@ -100,7 +100,7 @@ export default function EditAccount() {
             };
 
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/adminbakht/update-account/${userrData.userr.id}`,
+                `https://bakhtart-backend.onrender.com/adminbakht/update-account/${userrData.userr.id}`,
                 userrr
             );
             if (!firstName && !lastName && !username && !email && !phoneNumber) {
@@ -111,13 +111,13 @@ export default function EditAccount() {
                 if (email && (!firstName || !lastName || !username || !phoneNumber)) {
                     try {
                         await Axios.get(
-                            `https://bakhtart-backend.herokuapp.com/adminbakht/verify-email?email=${email}`
+                            `https://bakhtart-backend.onrender.com/adminbakht/verify-email?email=${email}`
                         );
                         const userEmail = {
                             email
                         }
                         await Axios.put(
-                            `https://bakhtart-backend.herokuapp.com/adminbakht/update-account/${userrData.userr.id}`,
+                            `https://bakhtart-backend.onrender.com/adminbakht/update-account/${userrData.userr.id}`,
                             userEmail
                         );
                         setDisUpdBtn(true);
@@ -228,7 +228,7 @@ export default function EditAccount() {
                                   {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>
@@ -278,7 +278,7 @@ export default function EditAccount() {
                               {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-80 img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>

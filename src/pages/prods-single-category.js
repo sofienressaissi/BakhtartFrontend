@@ -45,13 +45,13 @@ export default function ProdsSingleCategory() {
     const [searchitem, setSearchitem] = useState('');
 
     useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
       useEffect(async() => {
         const result_pc = 
-        await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/countprodcart');
+        await Axios.get('https://bakhtart-backend.onrender.com/fashion/countprodcart');
         setProdCarts(result_pc.data);
       },[]);
 
@@ -76,7 +76,7 @@ export default function ProdsSingleCategory() {
       }, [currentPage, bakhtartProds]);
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtartCats(result_bakhtcats.data);
       },[]);
 
@@ -107,7 +107,7 @@ export default function ProdsSingleCategory() {
         };
         if (userrData.userr) {
           await Axios.post(
-            "https://bakhtart-backend.herokuapp.com/fashion/add-prod-seen/"+userrData.userr.id,
+            "https://bakhtart-backend.onrender.com/fashion/add-prod-seen/"+userrData.userr.id,
             prodSeen
         );
         }
@@ -128,7 +128,7 @@ export default function ProdsSingleCategory() {
               content
           };
           await Axios.post(
-              "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+              "https://bakhtart-backend.onrender.com/fashion/send-message",
               newMsg
           );
           toast.show({title: "Message sent successfully!", 

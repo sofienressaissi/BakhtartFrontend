@@ -41,12 +41,12 @@ export default function MyOrders() {
     let [nbOrd] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtords = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-orders');
+        const result_bakhtords = await Axios.get('https://bakhtart-backend.onrender.com/fashion/all-orders');
         setOrders(result_bakhtords.data);
       },[]);
 
       useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
@@ -95,7 +95,7 @@ export default function MyOrders() {
                 productId: productId
             };
             await Axios.delete(
-                "https://bakhtart-backend.herokuapp.com/fashion/delete-order/"+productId+"/"+userrData.userr.id,
+                "https://bakhtart-backend.onrender.com/fashion/delete-order/"+productId+"/"+userrData.userr.id,
                 orderToRemove
             );
             toast.show({title: 'Order Cancelled!',
@@ -118,7 +118,7 @@ export default function MyOrders() {
                 content
             };
             await Axios.post(
-                "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+                "https://bakhtart-backend.onrender.com/fashion/send-message",
                 newMsg
             );
             toast.show({title: "Message sent successfully!", 
@@ -333,7 +333,7 @@ input[type="password"] {\
                         <div className="profile-img">
                         {
                             userrData.userr && userrData.userr.imageProfile === "unknownAvatar.jpg" ?
-                                <img src={`https://bakhtart-backend.herokuapp.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
+                                <img src={`https://bakhtart-backend.onrender.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
                                      alt="" style={{width: '250px', height: '150px'}}/> :
                                 <></>
                         }

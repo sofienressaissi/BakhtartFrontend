@@ -37,7 +37,7 @@ export default function OutOfStockProducts() {
     let [nbUM] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtusers = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allMsgs');
+        const result_bakhtusers = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allMsgs');
         setAllMsgs(result_bakhtusers.data);
       },[]);
       allMsgs.map((itemu,index)=>{
@@ -45,12 +45,12 @@ export default function OutOfStockProducts() {
       });
 
     useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin/');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin/');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
       useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin/');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin/');
         setBakhtartCats(result_bakhtcats.data);
       },[]);
 
@@ -75,7 +75,7 @@ export default function OutOfStockProducts() {
     const deleteProduct = async (productId) => {
         try {
                 await Axios.delete(
-                    `https://bakhtart-backend.herokuapp.com/adminbakht/delete-prod/${productId}`
+                    `https://bakhtart-backend.onrender.com/adminbakht/delete-prod/${productId}`
                 );
                 toast.show({title: 'Product Deleted!',
             position: 'topright', type: 'warn'});
@@ -166,7 +166,7 @@ export default function OutOfStockProducts() {
                                   {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>
@@ -216,7 +216,7 @@ export default function OutOfStockProducts() {
                               {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-80 img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>

@@ -34,7 +34,7 @@ export default function Messages() {
     let [nbUM] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtmsgs = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allMsgs');
+        const result_bakhtmsgs = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allMsgs');
         setAllMsgs(result_bakhtmsgs.data);
       },[]);
       allMsgs.map((itemu,index)=>{
@@ -62,7 +62,7 @@ export default function Messages() {
     const markAsRead = async (msgId) => {
         try {
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/adminbakht/markasread/${msgId}`
+                `https://bakhtart-backend.onrender.com/adminbakht/markasread/${msgId}`
             );
             toast.show({title: 'Message Read',
             position: 'topright', type: 'info'});
@@ -77,7 +77,7 @@ export default function Messages() {
     const markAsUnread = async (msgId) => {
         try {
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/adminbakht/markasunread/${msgId}`
+                `https://bakhtart-backend.onrender.com/adminbakht/markasunread/${msgId}`
             );
             toast.show({title: 'Message Not Read',
             position: 'topright', type: 'warn'});
@@ -92,7 +92,7 @@ export default function Messages() {
     const deleteMessage = async (msgId) => {
         try {
                 await Axios.delete(
-                    `https://bakhtart-backend.herokuapp.com/adminbakht/delete-msg/${msgId}`
+                    `https://bakhtart-backend.onrender.com/adminbakht/delete-msg/${msgId}`
                 );
                 toast.show({title: 'Message Deleted!',
             position: 'topright', type: 'warn'});
@@ -162,7 +162,7 @@ export default function Messages() {
         toast.show({title: "Your message has been sent successfully.", 
         position: 'topright', type: 'info'});
         Axios.put(
-            `https://bakhtart-backend.herokuapp.com/adminbakht/messagereplied/${id}`
+            `https://bakhtart-backend.onrender.com/adminbakht/messagereplied/${id}`
         );
         setTimeout(function(){
             window.location.reload();
@@ -252,7 +252,7 @@ export default function Messages() {
                                   {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>
@@ -302,7 +302,7 @@ export default function Messages() {
                               {
                                       userrData.userr.imageProfile === 'unknownAvatar.jpg' ?
                                       <>
-                                        <img src="https://bakhtart-backend.herokuapp.com/upload_images_bakht/unknownAvatar.jpg" 
+                                        <img src="https://bakhtart-backend.onrender.com/upload_images_bakht/unknownAvatar.jpg" 
                                   className="img-80 img-radius" 
                                   alt="User-Profile-Image"/>
                                       </> : <></>

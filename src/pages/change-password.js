@@ -45,7 +45,7 @@ export default function EditProfile() {
             };
 
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/fashion/change-password/${userrData.userr.id}`,
+                `https://bakhtart-backend.onrender.com/fashion/change-password/${userrData.userr.id}`,
                 userEditPass
             );
             toast.show({title: 'Password Updated!',
@@ -96,7 +96,7 @@ export default function EditProfile() {
                 content
             };
             await Axios.post(
-                "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+                "https://bakhtart-backend.onrender.com/fashion/send-message",
                 newMsg
             );
             toast.show({title: "Message sent successfully!", 
@@ -300,7 +300,7 @@ input[type="password"] {\
                     <div className="profile-img">
                     {
                             userrData.userr && userrData.userr.imageProfile === "unknownAvatar.jpg" ?
-                                <img src={`https://bakhtart-backend.herokuapp.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
+                                <img src={`https://bakhtart-backend.onrender.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
                                      alt="" style={{width: '250px', height: '150px'}}/> :
                                 <></>
                         }

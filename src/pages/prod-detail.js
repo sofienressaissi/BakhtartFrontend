@@ -97,22 +97,22 @@ export default function ProdDetail() {
     let [nb_val] = useState(0);
 
     useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
       useEffect(async() => {
-        const result_orders = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-orders');
+        const result_orders = await Axios.get('https://bakhtart-backend.onrender.com/fashion/all-orders');
         setOrders(result_orders.data);
       },[]);
 
       useEffect(async() => {
-        const result_prodwish = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-wish-prods');
+        const result_prodwish = await Axios.get('https://bakhtart-backend.onrender.com/fashion/all-wish-prods');
         setProdWishlist(result_prodwish.data);
       },[]);
 
       useEffect(async() => {
-        const result_prodrates = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/countprodrate');
+        const result_prodrates = await Axios.get('https://bakhtart-backend.onrender.com/fashion/countprodrate');
         setProdRates(result_prodrates.data);
       },[]);
 
@@ -162,13 +162,13 @@ export default function ProdDetail() {
       }, [currentPage, newProdByCatList]);
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtartCats(result_bakhtcats.data);
       },[]);
 
       useEffect(async() => {
         const result_pc = 
-        await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/countprodcart');
+        await Axios.get('https://bakhtart-backend.onrender.com/fashion/countprodcart');
         setProdCarts(result_pc.data);
       },[]);
 
@@ -190,7 +190,7 @@ export default function ProdDetail() {
         };
         if (userrData.userr) {
           await Axios.post(
-            "https://bakhtart-backend.herokuapp.com/fashion/add-prod-seen/"+userrData.userr.id,
+            "https://bakhtart-backend.onrender.com/fashion/add-prod-seen/"+userrData.userr.id,
             prodSeen
         );
         }
@@ -209,7 +209,7 @@ export default function ProdDetail() {
             quantityMin
         };
         await Axios.put(
-            "https://bakhtart-backend.herokuapp.com/fashion/decr-quantity/"+userrData.userr.id+"/"+productId,
+            "https://bakhtart-backend.onrender.com/fashion/decr-quantity/"+userrData.userr.id+"/"+productId,
             prodToCart
         );
         toast.show({title: 'Quantity Updated!',
@@ -229,7 +229,7 @@ export default function ProdDetail() {
                 quantityMin
             };
             await Axios.put(
-                "https://bakhtart-backend.herokuapp.com/fashion/incr-quantity/"+userrData.userr.id+"/"+productId,
+                "https://bakhtart-backend.onrender.com/fashion/incr-quantity/"+userrData.userr.id+"/"+productId,
                 prodToCart
             );
             toast.show({title: 'Quantity Updated!',
@@ -249,7 +249,7 @@ export default function ProdDetail() {
           productId: productId
       };
         await Axios.post(
-          "https://bakhtart-backend.herokuapp.com/fashion/add-product-rate/"+userrData.userr.id,
+          "https://bakhtart-backend.onrender.com/fashion/add-product-rate/"+userrData.userr.id,
           productRate
         );
         toast.show({title: 'You rated this product with '+value+ ' out of 5',
@@ -265,7 +265,7 @@ export default function ProdDetail() {
     const addWishProd = async () => {
       try {
         await Axios.post(
-          "https://bakhtart-backend.herokuapp.com/fashion/add-wishlist/"+productId+"/"+userrData.userr.id
+          "https://bakhtart-backend.onrender.com/fashion/add-wishlist/"+productId+"/"+userrData.userr.id
       );
       toast.show({title: 'Product Added To Wishlist!',
           position: 'topright', type: 'info'});
@@ -285,7 +285,7 @@ export default function ProdDetail() {
               quantityMin
           };
           await Axios.post(
-              "https://bakhtart-backend.herokuapp.com/fashion/add-to-cart/"+userrData.userr.id,
+              "https://bakhtart-backend.onrender.com/fashion/add-to-cart/"+userrData.userr.id,
               prodToCart
           );
           toast.show({title: 'Product Added To Cart!',
@@ -331,7 +331,7 @@ export default function ProdDetail() {
               content
           };
           await Axios.post(
-              "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+              "https://bakhtart-backend.onrender.com/fashion/send-message",
               newMsg
           );
           toast.show({title: "Message sent successfully!", 

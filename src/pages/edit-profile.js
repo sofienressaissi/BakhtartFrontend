@@ -57,7 +57,7 @@ export default function EditProfile() {
                 imageProfile: data.url
             };
             Axios.put(
-                `https://bakhtart-backend.herokuapp.com/fashion/fashion-profile/${userrData.userr.id}`,
+                `https://bakhtart-backend.onrender.com/fashion/fashion-profile/${userrData.userr.id}`,
                 imageToUpdate
             );
             toast.show({title: 'Profile Image Updated Successfully!',
@@ -86,7 +86,7 @@ export default function EditProfile() {
             };
 
             await Axios.put(
-                `https://bakhtart-backend.herokuapp.com/fashion/update-fashion/${userrData.userr.id}`,
+                `https://bakhtart-backend.onrender.com/fashion/update-fashion/${userrData.userr.id}`,
                 userrr
             );
             if (!firstName && !lastName && !username && !email && !phoneNumber
@@ -99,13 +99,13 @@ export default function EditProfile() {
                     || !region || !ville || !firstAddress || !secondAddress)) {
                     try {
                         await Axios.get(
-                            `https://bakhtart-backend.herokuapp.com/adminbakht/verify-email?email=${email}`
+                            `https://bakhtart-backend.onrender.com/adminbakht/verify-email?email=${email}`
                         );
                         const userEmail = {
                             email
                         }
                         await Axios.put(
-                            `https://bakhtart-backend.herokuapp.com/fashion/update-fashion/${userrData.userr.id}`,
+                            `https://bakhtart-backend.onrender.com/fashion/update-fashion/${userrData.userr.id}`,
                             userEmail
                         );
                         toast.show({title: 'Account Updated Successfully!',
@@ -156,7 +156,7 @@ export default function EditProfile() {
             const token = localStorage.getItem("auth-token");
             if (window.confirm("Are you sure you would like to deactivate your account ?")) {
                 await Axios.put(
-                    `https://bakhtart-backend.herokuapp.com/fashion/deactivate/${userrData.userr.id}`,
+                    `https://bakhtart-backend.onrender.com/fashion/deactivate/${userrData.userr.id}`,
                     userrData.userr, {headers: {"x-auth-token": token}}
                 );
                 toast.show({title: 'Account Deactivated!',
@@ -187,7 +187,7 @@ export default function EditProfile() {
                 content
             };
             await Axios.post(
-                "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+                "https://bakhtart-backend.onrender.com/fashion/send-message",
                 newMsg
             );
             toast.show({title: "Message sent successfully!", 
@@ -399,7 +399,7 @@ table {\
                     <div className="profile-img">
                         {
                             userrData.userr && userrData.userr.imageProfile === "unknownAvatar.jpg" ?
-                                <img src={`https://bakhtart-backend.herokuapp.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
+                                <img src={`https://bakhtart-backend.onrender.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
                                      alt="" style={{width: '250px', height: '150px'}}/> :
                                 <></>
                         }

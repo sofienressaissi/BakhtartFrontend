@@ -38,7 +38,7 @@ export default function Homepage() {
 
     useEffect(async() => {
       const result_pc = 
-      await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/countprodcart');
+      await Axios.get('https://bakhtart-backend.onrender.com/fashion/countprodcart');
       setProdCarts(result_pc.data);
     },[]);
 
@@ -60,7 +60,7 @@ export default function Homepage() {
     });
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtartCats(result_bakhtcats.data);
       },[]);
 
@@ -100,7 +100,7 @@ export default function Homepage() {
               content
           };
           await Axios.post(
-              "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+              "https://bakhtart-backend.onrender.com/fashion/send-message",
               newMsg
           );
           toast.show({title: "Message sent successfully!", 

@@ -41,17 +41,17 @@ export default function SeenRecently() {
     let PageSize = seenProds.length;
 
     useEffect(async() => {
-        const result_bakhtcats = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/allBakhtCatsAdmin');
+        const result_bakhtcats = await Axios.get('https://bakhtart-backend.onrender.com/fashion/allBakhtCatsAdmin');
         setBakhtCats(result_bakhtcats.data);
       },[]);
 
     useEffect(async() => {
-        const result_seen_prods = await Axios.get('https://bakhtart-backend.herokuapp.com/fashion/all-prods-seen');
+        const result_seen_prods = await Axios.get('https://bakhtart-backend.onrender.com/fashion/all-prods-seen');
         setSeenProds(result_seen_prods.data);
       },[]);
 
       useEffect(async() => {
-        const result_bakhtprods = await Axios.get('https://bakhtart-backend.herokuapp.com/adminbakht/allBakhtProdsAdmin');
+        const result_bakhtprods = await Axios.get('https://bakhtart-backend.onrender.com/adminbakht/allBakhtProdsAdmin');
         setBakhtartProds(result_bakhtprods.data);
       },[]);
 
@@ -105,7 +105,7 @@ export default function SeenRecently() {
                 content
             };
             await Axios.post(
-                "https://bakhtart-backend.herokuapp.com/fashion/send-message",
+                "https://bakhtart-backend.onrender.com/fashion/send-message",
                 newMsg
             );
             toast.show({title: "Message sent successfully!", 
@@ -312,7 +312,7 @@ table {\
                         <div className="profile-img">
                         {
                             userrData.userr && userrData.userr.imageProfile === "unknownAvatar.jpg" ?
-                                <img src={`https://bakhtart-backend.herokuapp.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
+                                <img src={`https://bakhtart-backend.onrender.com/public/upload_images_bakht/${userrData.userr.imageProfile}`}
                                      alt="" style={{width: '250px', height: '150px'}}/> :
                                 <></>
                         }

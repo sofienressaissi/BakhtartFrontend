@@ -28,7 +28,7 @@ export default function Register() {
             phoneNumber
         };
         await Axios.post(
-            "https://bakhtart-backend.herokuapp.com/fashion/register",
+            "https://bakhtart-backend.onrender.com/fashion/register",
             newUser
         );
         toast.show({title: "Thank you for registering!", 
